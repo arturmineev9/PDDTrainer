@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.tickets.TicketEndFragment">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:layout_marginTop="30dp"
+        android:id="@+id/successfultxt"
+        android:fontFamily="@font/font1"/>
+
+    <ImageView
+        android:id="@+id/imageresults"
+        android:layout_below="@+id/successfultxt"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="90dp" />
+
+    <TextView
+        android:id="@+id/results"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageresults"
+        android:layout_marginTop="80dp"
+        android:gravity="center"
+        android:fontFamily="@font/font1"
+        android:textColor="@color/black"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/backbutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/results"
+        android:fontFamily="@font/font1"
+        android:layout_margin="30dp"
+        android:textColor="@color/white"
+        android:text="Вернутьcя назад"
+        android:background="@drawable/btn_exam"/>
+</RelativeLayout>

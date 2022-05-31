@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/background_color"
+    tools:context=".ui.statistics.StatisticsFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:fontFamily="@font/font"
+            android:id="@+id/progresstext"
+            android:text="Прогресс"
+            android:textSize="18dp"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:fontFamily="@font/font1"
+            android:textStyle="bold"
+            android:id="@+id/percent_prepare"
+            android:layout_below="@id/progresstext"
+            android:layout_marginTop="80dp"
+            android:textSize="30sp"/>
+
+        <ProgressBar
+            android:layout_marginLeft="95dp"
+            android:id="@+id/circle_pg"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_below="@id/progresstext"
+            android:indeterminateOnly="false"
+            android:progressDrawable="@drawable/circle_progressbar"
+            android:progress="60"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:fontFamily="@font/font1"
+            android:id="@+id/questiontxt"
+            android:layout_below="@+id/circle_pg"
+            android:layout_marginLeft="10dp"
+            android:text="Вопросы"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_below="@+id/circle_pg"
+            android:layout_marginRight="10dp"
+            android:fontFamily="@font/font"
+            android:id="@+id/anscount"/>
+
+        <ProgressBar
+            android:id="@+id/progressbarstat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_below="@id/anscount"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:progressDrawable="@drawable/progress_bar"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/biletsstattxt"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:fontFamily="@font/font1"
+            android:text="Билеты"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/progressbarstat"/>
+
+        <ProgressBar
+            android:id="@+id/progressbarstickets"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_below="@+id/biletsstattxt"
+            android:progressDrawable="@drawable/progress_bar"/>
+
+        <TextView
+            android:id="@+id/tickets20count"
+            android:layout_width="185dp"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:fontFamily="@font/font"
+            android:layout_below="@+id/progressbarstat" />
+
+        <ProgressBar
+            android:id="@+id/progressbarsthemes"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_below="@+id/biletsstattxt"
+            android:progressDrawable="@drawable/progress_bar"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Темы"
+            android:layout_marginLeft="50dp"
+            android:fontFamily="@font/font1"
+            android:layout_below="@+id/progressbarstat"/>
+
+        <TextView
+            android:id="@+id/full_themes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:fontFamily="@font/font"
+            android:layout_below="@id/progressbarstat"
+            android:layout_marginRight="10dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:id="@+id/view234"
+            android:layout_below="@+id/progressbarstickets"
+            android:background="@color/black"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_below="@id/view234"
+            android:layout_marginTop="10dp"
+            android:id="@+id/intensitytxt"
+            android:text="Интенсивность"
+            android:fontFamily="@font/font"
+            android:textSize="18dp"/>
+
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChart"
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_height="300dp"
+            android:layout_below="@+id/intensitytxt"/>
+
+    </RelativeLayout>
+</ScrollView>
+

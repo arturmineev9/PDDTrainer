@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    android:label="Сложные вопросы"
+    app:startDestination="@id/navigation_rules">
+
+    <fragment
+        android:id="@+id/navigation_main"
+        android:name="com.example.autoschool11.ui.statistics.StatisticsFragment"
+        android:label="@string/title_main"
+        tools:layout="@layout/fragment_stat"/>
+
+    <fragment
+        android:id="@+id/navigation_tickets"
+        android:name="com.example.autoschool11.ui.tickets.TicketsFragmentMain"
+        android:label="@string/title_tickets"
+        tools:layout="@layout/fragment_tickets">
+        <action
+            android:id="@+id/action_navigation_tickets_to_ticketsFragment40"
+            app:destination="@id/ticketsFragment40" />
+        <action
+            android:id="@+id/action_navigation_tickets_to_ticketsFragmentThemes"
+            app:destination="@id/ticketsFragmentThemes" />
+        <action
+            android:id="@+id/action_navigation_tickets_to_mistakesFragment"
+            app:destination="@id/mistakesFragment" />
+        <action
+            android:id="@+id/action_navigation_tickets_to_hardQuestionFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:destination="@id/hardQuestionFragment" />
+        <action
+            android:id="@+id/action_navigation_tickets_to_trainingFragment"
+            app:destination="@id/trainingFragment" />
+        <action
+            android:id="@+id/action_navigation_tickets_to_favouritesFragment"
+            app:destination="@id/favouritesFragment" />
+        <action
+            android:id="@+id/action_navigation_tickets_to_finesTestFragment"
+            app:destination="@id/finesTestFragment" />
+        <action
+            android:id="@+id/action_navigation_tickets_to_signsTypesTestFragment"
+            app:destination="@id/signsTypesTestFragment" />
+        <action
+            android:id="@+id/action_navigation_tickets_to_marathonFragment"
+            app:destination="@id/marathonFragment" />
+        <action
+            android:id="@+id/action_navigation_tickets_to_examFragment"
+            app:destination="@id/examFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_rules"
+        android:name="com.example.autoschool11.ui.rules.HomeFragment"
+        android:label="@string/title_rules"
+        tools:layout="@layout/fragment_rules_bottom">
+        <action
+            android:id="@+id/action_navigation_rules_to_rulesFragmentPDD2"
+            app:destination="@id/rulesFragmentPDD2" />
+        <action
+            android:id="@+id/action_navigation_rules_to_regionCodesFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:destination="@id/regionCodesFragment" />
+        <action
+            android:id="@+id/action_navigation_rules_to_medicineFragment"
+            app:destination="@id/medicineFragment" />
+        <action
+            android:id="@+id/action_navigation_rules_to_examRulesFragment"
+            app:destination="@id/examRulesFragment" />
+        <action
+            android:id="@+id/action_navigation_rules_to_finesFragment"
+            app:destination="@id/finesFragment" />
+        <action
+            android:id="@+id/action_navigation_rules_to_signsFragment"
+            app:destination="@id/signsFragment" />
+        <action
+            android:id="@+id/action_navigation_rules_to_talkingFragment"
+            app:destination="@id/talkingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/rulesFragment1"
+        android:name="com.example.autoschool11.ui.rules.pdd.RulesFragmentPDF"
+        tools:layout="@layout/fragment_rules1"/>
+    <fragment
+        android:id="@+id/finesFragment"
+        android:name="com.example.autoschool11.ui.rules.FinesFragment"
+        android:label="Штрафы"
+        tools:layout="@layout/fragment_fines" />
+    <fragment
+        android:id="@+id/signsFragment"
+        android:name="com.example.autoschool11.ui.rules.signs.SignsFragment"
+        android:label="Дорожные знаки"
+        tools:layout="@layout/fragment_signs">
+        <action
+            android:id="@+id/action_signsFragment_to_signsFragmentVertical"
+            app:destination="@id/signsFragmentVertical" />
+    </fragment>
+    <fragment
+        android:id="@+id/ticketsFragment40"
+        android:name="com.example.autoschool11.ui.tickets.TicketsFragment40"
+        android:label="Билеты"
+        tools:layout="@layout/fragment_tickets40">
+        <action
+            android:id="@+id/action_ticketsFragment40_to_ticket1"
+            app:destination="@id/ticket1" />
+    </fragment>
+    <fragment
+        android:id="@+id/ticketsFragmentThemes"
+        android:name="com.example.autoschool11.ui.tickets.modes.TicketsFragmentThemes"
+        android:label="Темы"
+        tools:layout="@layout/fragment_tickets_themes">
+        <action
+            android:id="@+id/action_ticketsFragmentThemes_to_ticketThemes"
+            app:destination="@id/ticketThemes" />
+    </fragment>
+    <fragment
+        android:id="@+id/examRulesFragment"
+        android:name="com.example.autoschool11.ui.rules.examinfo.ExamInfoFragment"
+        android:label="Особенности экзамена"
+        tools:layout="@layout/fragment_exam_info">
+        <action
+            android:id="@+id/action_examInfoFragment_to_examInfoFragment1"
+            app:destination="@id/examInfoFragment1" />
+    </fragment>
+    <fragment
+        android:id="@+id/medicineFragment"
+        android:name="com.example.autoschool11.ui.rules.medicine.MedicineFragment"
+        android:label="Медицина"
+        tools:layout="@layout/fragment_medicine">
+        <action
+            android:id="@+id/action_medicineFragment_to_medicineFragment1"
+            app:destination="@id/medicineFragment1" />
+    </fragment>
+    <fragment
+        android:id="@+id/talkingFragment"
+        android:name="com.example.autoschool11.ui.rules.DPSTalking.TalkingFragment"
+        android:label="Разговор с ДПС"
+        tools:layout="@layout/fragment_talking">
+        <action
+            android:id="@+id/action_talkingFragment_to_talkingFragment1"
+            app:destination="@id/talkingFragment1" />
+    </fragment>
+    <fragment
+        android:id="@+id/talkingFragment1"
+        android:name="com.example.autoschool11.ui.rules.DPSTalking.TalkingFragmentPDF"
+        tools:layout="@layout/fragment_talking1" />
+    <fragment
+        android:id="@+id/medicineFragment1"
+        android:name="com.example.autoschool11.ui.rules.medicine.MedicineFragmentPDF"
+        tools:layout="@layout/fragment_medicine1" />
+    <fragment
+        android:id="@+id/examInfoFragment1"
+        android:name="com.example.autoschool11.ui.rules.examinfo.ExamInfoFragmentPDF"
+        tools:layout="@layout/fragment_exam_info1" />
+    <fragment
+        android:id="@+id/regionCodesFragment"
+        android:name="com.example.autoschool11.ui.rules.RegionCodesFragment"
+        android:label="Коды регионов"
+        tools:layout="@layout/fragment_region_codes" />
+    <fragment
+        android:id="@+id/signsFragmentVertical"
+        android:name="com.example.autoschool11.ui.rules.signs.SignsFragmentPDF"
+        tools:layout="@layout/fragment_signs_vertical" />
+    <fragment
+        android:id="@+id/ticket1"
+        android:name="com.example.autoschool11.ui.tickets.Ticket1"
+        tools:layout="@layout/fragment_ticket1">
+        <action
+            android:id="@+id/action_ticket1_to_ticketEndFragment"
+            app:destination="@id/ticketEndFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ticketThemes"
+        android:name="com.example.autoschool11.ui.tickets.TicketThemes"
+        android:label="Темы"
+        tools:layout="@layout/fragment_ticket_themes" />
+    <fragment
+        android:id="@+id/ticketEndFragment"
+        android:name="com.example.autoschool11.ui.tickets.TicketEndFragment"
+        tools:layout="@layout/fragment_ticket_end" />
+    <fragment
+        android:id="@+id/mistakesFragment"
+        android:name="com.example.autoschool11.ui.tickets.modes.MistakesFragment"
+        android:label="Работа над ошибками"
+        tools:layout="@layout/fragment_mistakes" />
+    <fragment
+        android:id="@+id/hardQuestionFragment"
+        android:name="com.example.autoschool11.ui.tickets.modes.HardQuestionFragment"
+        android:label="Сложные вопросы"
+        tools:layout="@layout/fragment_hard_question" />
+    <fragment
+        android:id="@+id/trainingFragment"
+        android:name="com.example.autoschool11.ui.tickets.modes.TrainingFragment"
+        android:label="Умная тренировка"
+        tools:layout="@layout/fragment_training" >
+        <action
+            android:id="@+id/action_trainingFragment_to_trainingFragmentSolution"
+            app:destination="@id/trainingFragmentSolution" />
+    </fragment>
+    <fragment
+        android:id="@+id/favouritesFragment"
+        android:name="com.example.autoschool11.ui.tickets.modes.FavouritesFragment"
+        android:label="Избранные вопросы"
+        tools:layout="@layout/fragment_favourites" />
+    <fragment
+        android:id="@+id/trainingFragmentSolution"
+        android:name="com.example.autoschool11.ui.tickets.modes.TrainingFragmentSolution"
+        android:label="Умная тренировка"
+        tools:layout="@layout/fragment_training_solution" />
+    <fragment
+        android:id="@+id/finesTestFragment"
+        android:name="com.example.autoschool11.ui.tickets.modes.FinesTestFragment"
+        android:label="Тест на штрафы"
+        tools:layout="@layout/fragment_fines_test" />
+    <fragment
+        android:id="@+id/signsTypesTestFragment"
+        android:name="com.example.autoschool11.ui.tickets.modes.signs_test.SignsTypesTestFragment"
+        android:label="Дорожные знаки"
+        tools:layout="@layout/fragment_signs_types_test">
+        <action
+            android:id="@+id/action_signsTypesTestFragment_to_signsTestFragment"
+            app:destination="@id/signsTestFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signsTestFragment"
+        android:name="com.example.autoschool11.ui.tickets.modes.signs_test.SignsTestFragment"
+        android:label="Дорожные знаки"
+        tools:layout="@layout/fragment_signs_test" />
+    <fragment
+        android:id="@+id/marathonFragment"
+        android:name="com.example.autoschool11.ui.tickets.modes.MarathonFragment"
+        android:label="Марафон"
+        tools:layout="@layout/fragment_marathon" />
+    <fragment
+        android:id="@+id/examFragment"
+        android:name="com.example.autoschool11.ui.tickets.modes.exam.ExamFragment"
+        android:label="Экзамен"
+        tools:layout="@layout/fragment_exam">
+        <action
+            android:id="@+id/action_examFragment_to_examEndFragment"
+            app:destination="@id/examEndFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/examEndFragment"
+        android:name="com.example.autoschool11.ui.tickets.modes.exam.ExamEndFragment"
+        android:label="Экзамен" />
+    <fragment
+        android:id="@+id/rulesFragmentPDD2"
+        android:name="com.example.autoschool11.ui.rules.pdd.RulesFragmentPDD"
+        android:label="ПДД"
+        tools:layout="@layout/fragment_rules_p_d_d">
+        <action
+            android:id="@+id/action_rulesFragmentPDD2_to_rulesFragment1"
+            app:destination="@id/rulesFragment1" />
+    </fragment>
+</navigation>

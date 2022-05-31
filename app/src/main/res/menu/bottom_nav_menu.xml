@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_main"
+        android:icon="@drawable/ic_baseline_query_stats_24"
+        android:title="@string/title_main" />
+
+
+    <item
+        android:id="@+id/navigation_rules"
+        android:icon="@drawable/ic_baseline_menu_book_24"
+        android:title="@string/title_rules"/>
+
+    <item
+        android:id="@+id/navigation_tickets"
+        android:icon="@drawable/ic_baseline_content_paste_search_24"
+        android:title="@string/title_tickets"/>
+
+</menu>

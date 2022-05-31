@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.tickets.TicketThemes">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/horizontalRV"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/db_image"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_below="@+id/horizontalRV" />
+
+        <TextView
+            android:id="@+id/db_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/db_image"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Вопрос" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ansRV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/db_question"
+            android:layout_marginTop="5dp" />
+
+        <View
+            android:id="@+id/view123"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/ansRV"
+            android:background="@color/colorSettings" />
+
+        <Button
+            android:id="@+id/btnnext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view123"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/btn_exam"
+            android:text="Следующий вопрос"
+            android:textColor="@color/white" />
+
+
+    </RelativeLayout>
+</ScrollView>

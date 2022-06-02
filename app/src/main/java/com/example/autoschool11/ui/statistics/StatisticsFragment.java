@@ -19,6 +19,7 @@ import com.example.autoschool11.db.DayStatisticsDataBaseHelper;
 import com.example.autoschool11.db.IntensityClass;
 import com.example.autoschool11.db.StatisticsDataBaseHelper;
 import com.example.autoschool11.db.TrainingDataBaseHelper;
+import com.example.autoschool11.theme_changer.Constant;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
@@ -38,7 +39,7 @@ public class StatisticsFragment extends Fragment {
     ArrayList<BarEntry> barEntryArrayList;
     ArrayList<String> dates;
     ArrayList<IntensityClass> intensityClassArrayList;
-
+    TextView stat_available;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -50,6 +51,7 @@ public class StatisticsFragment extends Fragment {
         TextView anscount = view.findViewById(R.id.anscount);
         TextView ticket20count = view.findViewById(R.id.tickets20count);
         BarChart barChart = view.findViewById(R.id.barChart);
+        stat_available = view.findViewById(R.id.stat_available);
         ProgressBar circle_pb = view.findViewById(R.id.circle_pg);
         TextView percentage = view.findViewById(R.id.percent_prepare);
         DayStatisticsDataBaseHelper dayStatisticsDataBaseHelper = new DayStatisticsDataBaseHelper(getContext());
@@ -64,11 +66,18 @@ public class StatisticsFragment extends Fragment {
             dates.add(date);
         }
 
+        if (dates.size() != 0){
+            stat_available.setVisibility(View.INVISIBLE);
+        }
 
         StatisticsDataBaseHelper dataBaseHelper = new StatisticsDataBaseHelper(getContext());
 
         BarDataSet barDataSet = new BarDataSet(barEntryArrayList, "Ответы");
-        barDataSet.setColors(MainActivity.getThemeColor());
+        if (String.valueOf(Constant.color).equals("0")) {
+            barDataSet.setColors(0xffF44336);
+        } else {
+            barDataSet.setColors(MainActivity.getThemeColor());
+        }
         barDataSet.setValueTextColor(Color.BLACK);
         barDataSet.setValueTextSize(16f);
 

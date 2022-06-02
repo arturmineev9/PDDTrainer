@@ -29,6 +29,8 @@ import com.example.autoschool11.adapters.HorizontalButtonAdapter;
 import com.example.autoschool11.db.DataBaseHelper;
 import com.example.autoschool11.db.DbButtonClass;
 import com.example.autoschool11.db.FavouritesDataBaseHelper;
+import com.example.autoschool11.db.MistakesDataBaseHelper;
+import com.example.autoschool11.db.TrainingDataBaseHelper;
 import com.example.autoschool11.ui.tickets.Ticket1;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -261,7 +263,8 @@ public class FavouritesFragment extends Fragment implements DbButtonAdapter.DbBu
     }
 
     public void postAndNotifyHorizontalAdapter(final Handler handler, final RecyclerView recyclerView, int question_number, int position) {
-        FavouritesDataBaseHelper dataBaseHelper = new FavouritesDataBaseHelper(getContext());
+        MistakesDataBaseHelper dataBaseHelper = new MistakesDataBaseHelper(getContext());
+        TrainingDataBaseHelper trainingDataBaseHelper = new TrainingDataBaseHelper(getContext());
         handler.post(new Runnable() {
             @Override
             public void run() {
@@ -283,10 +286,12 @@ public class FavouritesFragment extends Fragment implements DbButtonAdapter.DbBu
                         } else {
                             ansbutton.setCardBackgroundColor(Color.argb(255, 255, 0, 0));
                             right_button.setCardBackgroundColor(Color.argb(255, 92, 184, 92));
+                            dataBaseHelper.insertMistake(i);
+                            trainingDataBaseHelper.decreaseKnowingID(i);
                         }
                         explanation.setVisibility(View.VISIBLE);
                         btnnext.setVisibility(View.VISIBLE);
-
+                        trainingDataBaseHelper.increaseKnowingID(i);
 
                         if (position == DataBaseHelper.getCorrectans()) {
                             bt_view.setCardBackgroundColor(Color.GREEN);
@@ -315,12 +320,12 @@ public class FavouritesFragment extends Fragment implements DbButtonAdapter.DbBu
             favouritesDataBaseHelper.insertFavourite(i - 1);
             favourite_img.setImageResource(R.drawable.star_pressed);
             favourite_txt.setText("Удалить из избранного");
-            //correctmistakes.remove(favouritesDataBaseHelper.getId(question_number - 2));
+            correctmistakes.remove(favouritesDataBaseHelper.getId(question_number - 2));
         } else {
             favouritesDataBaseHelper.deleteFavourite(i - 1);
             favourite_img.setImageResource(R.drawable.star_button);
             favourite_txt.setText("Добавить в избранное");
-            //correctmistakes.add(favouritesDataBaseHelper.getId(question_number - 2));
+            correctmistakes.add(favouritesDataBaseHelper.getId(question_number - 2));
         }
     }
 }

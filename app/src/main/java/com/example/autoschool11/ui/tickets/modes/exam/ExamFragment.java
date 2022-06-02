@@ -8,17 +8,20 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -39,6 +42,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 
 public class ExamFragment extends Fragment implements DbButtonAdapter.DbButtonClickListener, HorizontalButtonAdapter.HorizontalButtonClickListener, View.OnClickListener {
@@ -47,16 +51,16 @@ public class ExamFragment extends Fragment implements DbButtonAdapter.DbButtonCl
     RecyclerView recyclerViewans;
     RecyclerView recyclerViewhorizontal;
     static int i;
-    int end;
-    String ticket_number;
     String img;
+    long timer = 1200000;
     public DataBaseHelper mDBHelper;
     public SQLiteDatabase mDb;
     Context context;
     static int count;
-    int ticketstart;
+    int amount_of_questions = 20;
     TextView question;
     TextView questionnumber;
+    TextView timerText;
     int countans;
     ImageView image_question;
     ImageView favourite_img;
@@ -137,6 +141,8 @@ public class ExamFragment extends Fragment implements DbButtonAdapter.DbButtonCl
                             if (j == 19) {
                                 if (20 - countans == 1) {
                                     numbers_add = new String[5];
+                                    amount_of_questions = 25;
+                                    Toast.makeText(getContext(), "Вы ошиблись в одном вопросе. Решите еще 5 доп. вопросов", Toast.LENGTH_SHORT).show();
                                     for (int q = 0; q < numbers_add.length; q++) {
                                         numbers_add[q] = Integer.toString(q + 21);
                                     }
@@ -154,6 +160,8 @@ public class ExamFragment extends Fragment implements DbButtonAdapter.DbButtonCl
 
                                 } else if (20 - countans == 2) {
                                     numbers_add = new String[10];
+                                    amount_of_questions = 30;
+                                    Toast.makeText(getContext(), "Вы ошиблись в двух вопросах. Решите еще 10 доп. вопросов", Toast.LENGTH_SHORT).show();
                                     for (int q = 0; q < numbers_add.length; q++) {
                                         numbers_add[q] = Integer.toString(q + 21);
                                     }
@@ -241,11 +249,10 @@ public class ExamFragment extends Fragment implements DbButtonAdapter.DbButtonCl
                                 Bundle bundle = new Bundle();
                                 bundle.putInt("countans", countans);
                                 bundle.putInt("type_of_fail", 2); //экзамен не сдан, т.к допущена ошибка в доп. вопросах
-                                bundle.putInt("countquestions", 20);
+                                bundle.putInt("countquestions", 30);
                                 NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
                                 navController.navigate(R.id.examEndFragment, bundle);
-                            }
-                            else {
+                            } else {
                                 Bundle bundle = new Bundle();
                                 bundle.putInt("countans", countans);
                                 bundle.putInt("type_of_fail", 0);
@@ -392,7 +399,7 @@ public class ExamFragment extends Fragment implements DbButtonAdapter.DbButtonCl
             favourite_img.setImageResource(R.drawable.star_button);
             favourite_txt.setText("Добавить в избранное");
         }
-        questionnumber.setText("Вопрос " + question_number + " / " + 20 + " " + a);
+        questionnumber.setText("Вопрос " + question_number + " / " + amount_of_questions);
         if (Integer.toString(DataBaseHelper.getBilet() + 1).length() == 1 && Integer.toString(DataBaseHelper.getNumber() + 1).length() == 1) {
             img = "pdd" + "_0" + Integer.toString(DataBaseHelper.getBilet() + 1) + "_0" + (DataBaseHelper.getNumber() + 1);
         } else if (Integer.toString(DataBaseHelper.getBilet() + 1).length() != 1 && Integer.toString(DataBaseHelper.getNumber() + 1).length() == 1) {
@@ -433,6 +440,29 @@ public class ExamFragment extends Fragment implements DbButtonAdapter.DbButtonCl
         inflater.inflate(R.menu.settings_menu, menu);
         for (int i = 0; i < menu.size(); i++)
             menu.getItem(i).setVisible(false);
+        inflater.inflate(R.menu.timer_menu, menu);
+        final MenuItem counter = menu.findItem(R.id.counter);
+        new CountDownTimer(timer, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                long millis = millisUntilFinished;
+                String hms = ((TimeUnit.MILLISECONDS.toMinutes(millis) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(millis))) + ":" + (TimeUnit.MILLISECONDS.toSeconds(millis) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millis))));
+
+                counter.setTitle(hms);
+                timer = millis;
+
+            }
+
+            public void onFinish() {
+                Bundle bundle = new Bundle();
+                bundle.putInt("countans", countans);
+                bundle.putInt("type_of_fail", 3); //экзамен не сдан, т.к вышло время
+                bundle.putInt("countquestions", amount_of_questions);
+                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
+                navController.navigate(R.id.examEndFragment, bundle);
+            }
+        }.start();
+
     }
 
     @Override

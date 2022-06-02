@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.autoschool11.ProgressBarAnimation;
 import com.example.autoschool11.R;
@@ -21,6 +22,7 @@ import com.example.autoschool11.db.TrainingDataBaseHelper;
 
 public class TrainingFragment extends Fragment implements View.OnClickListener {
     Button training_btn;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -59,36 +61,50 @@ public class TrainingFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                if (dataBaseHelper.getTrainingTableLength(1) >= 20){
+
+                if (dataBaseHelper.getTrainingTableLength(1) != 0)
                     bundle.putInt("knowing", 1);
-                    TrainingFragmentSolution.setQuestion_number(1);
-                    navController.navigate(R.id.trainingFragmentSolution, bundle);
-                }
-            }
-        });
+                else if (dataBaseHelper.getTrainingTableLength(2) != 0)
+                    bundle.putInt("knowing", 2);
+                else if (dataBaseHelper.getTrainingTableLength(3) != 0)
+                    bundle.putInt("knowing", 3);
+                else bundle.putInt("knowing", 4);
+                TrainingFragmentSolution.setQuestion_number(1);
+                navController.navigate(R.id.trainingFragmentSolution, bundle);
+        }
+    });
         return view;
-    }
+}
 
     @Override
     public void onClick(View view) {
+        TrainingDataBaseHelper trainingDataBaseHelper = new TrainingDataBaseHelper(getContext());
         Bundle bundle = new Bundle();
+        int knowing_id = 0;
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.not_know_card:
                 bundle.putInt("knowing", 1);
+                knowing_id = 1;
                 break;
             case R.id.know_card:
                 bundle.putInt("knowing", 2);
+                knowing_id = 2;
                 break;
             case R.id.know_good_card:
                 bundle.putInt("knowing", 3);
+                knowing_id = 3;
                 break;
             case R.id.know_awesome_card:
                 bundle.putInt("knowing", 4);
+                knowing_id = 4;
                 break;
         }
-        TrainingFragmentSolution.setQuestion_number(1);
-        navController.navigate(R.id.trainingFragmentSolution, bundle);
+        if (trainingDataBaseHelper.getTrainingTableLength(knowing_id) != 0) {
+            TrainingFragmentSolution.setQuestion_number(1);
+            navController.navigate(R.id.trainingFragmentSolution, bundle);
+        } else
+            Toast.makeText(getContext(), "В этой категории нет вопросов.", Toast.LENGTH_SHORT).show();
     }
 
 

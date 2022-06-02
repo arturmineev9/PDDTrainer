@@ -55,6 +55,9 @@ public class ExamEndFragment extends Fragment {
         } else if (type_of_fail == 2) {
             result_txt.setText("Экзамен не сдан! Вы допустили ошибку на дополнительных вопросах.");
             imageresults.setImageResource(R.drawable.fail);
+        } else if (type_of_fail == 3){
+            result_txt.setText("Время вышло!");
+            imageresults.setImageResource(R.drawable.fail);
         }
         result.setText(Integer.toString(countans) + "/" + countquestions);
 

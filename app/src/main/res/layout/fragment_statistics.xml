@@ -144,6 +144,17 @@
             android:textSize="18dp"/>
 
 
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="50dp"
+            android:layout_below="@+id/intensitytxt"
+            android:text="Статистика недоступна! Для начала решите пару билетов."
+            android:fontFamily="@font/font1"
+            android:id="@+id/stat_available"/>
+
         <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/barChart"
             android:layout_width="match_parent"

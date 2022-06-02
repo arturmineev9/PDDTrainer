@@ -32,7 +32,9 @@
             android:textSize="30sp"/>
 
         <ProgressBar
-            android:layout_marginLeft="95dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_centerInParent="true"
             android:id="@+id/circle_pg"
             android:layout_width="200dp"
             android:layout_height="200dp"
@@ -40,6 +42,7 @@
             android:indeterminateOnly="false"
             android:progressDrawable="@drawable/circle_progressbar"
             android:progress="60"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -80,16 +83,17 @@
 
         <ProgressBar
             android:id="@+id/progressbarstickets"
-            android:layout_width="175dp"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_below="@+id/biletsstattxt"
+
             android:progressDrawable="@drawable/progress_bar"/>
 
         <TextView
             android:id="@+id/tickets20count"
-            android:layout_width="185dp"
+            android:layout_width="165dp"
             android:layout_height="wrap_content"
             android:gravity="right"
             android:fontFamily="@font/font"
@@ -97,10 +101,11 @@
 
         <ProgressBar
             android:id="@+id/progressbarsthemes"
-            android:layout_width="180dp"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="200dp"
+            android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
+            android:layout_alignParentEnd="true"
             android:layout_marginBottom="10dp"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_below="@+id/biletsstattxt"
@@ -109,9 +114,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:text="Темы"
-            android:layout_marginLeft="50dp"
+            android:gravity="right"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="130dp"
             android:fontFamily="@font/font1"
             android:layout_below="@+id/progressbarstat"/>
 

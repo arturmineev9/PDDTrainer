@@ -61,9 +61,10 @@ public class StatisticsFragment extends Fragment {
             barEntryArrayList.add(new BarEntry(i, result));
             dates.add(date);
         }
-
+        barChart.setVisibility(View.INVISIBLE);
         if (dates.size() != 0){
             stat_available.setVisibility(View.INVISIBLE);
+            barChart.setVisibility(View.VISIBLE);
         }
 
         StatisticsDataBaseHelper dataBaseHelper = new StatisticsDataBaseHelper(getContext());

@@ -1,7 +1,8 @@
 package com.example.autoschool11.theme_changer;
 
+import android.widget.Toast;
+
 import com.example.autoschool11.R;
-import com.example.autoschool11.theme_changer.Constant;
 
 public class Methods {
 

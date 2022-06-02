@@ -72,15 +72,20 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 dialog.setColorListener(new ColorListener() {
                     @Override
                     public void OnColorClick(View v, int color) {
-                        colorize();
-                        Constant.color = color;
-                        methods.setColorTheme();
-                        editor.putInt("color", color);
-                        editor.putInt("theme", Constant.theme);
-                        editor.commit();
-                        Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
+                        if (color == 0xffffffff){
+                            Toast.makeText(getBaseContext(), "Тема белого цвета на данный момент недоступна", Toast.LENGTH_SHORT).show();
+                        } else {
+                            colorize();
+                            Constant.color = color;
+                            methods.setColorTheme();
+                            editor.putInt("color", color);
+                            editor.putInt("theme", Constant.theme);
+                            editor.commit();
+                            Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
+                        }
+
                     }
                 });
 
@@ -122,6 +127,9 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         dataBaseHelper.restartStatisticsDB();
         mistakesDataBaseHelper.restartMistakes();
         statisticsDataBaseHelper.restartDayStatisticsDB();
+        Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
         Toast.makeText(getBaseContext(), "Статистика сброшена!", Toast.LENGTH_SHORT).show();
     }
 }

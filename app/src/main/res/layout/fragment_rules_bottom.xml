@@ -1,30 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?attr/background_color"
-    android:orientation="vertical"
     tools:context=".ui.rules.RulesFragment">
 
-    <LinearLayout
+
+    <RelativeLayout
+        android:id="@+id/l"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipToPadding="false"
         android:gravity="center"
-        android:id="@+id/l"
-
         android:orientation="horizontal">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/pdd_card"
-            android:layout_width="340dp"
+            android:layout_width="match_parent"
             android:layout_height="140dp"
             android:layout_margin="10dp"
             android:clickable="true"
-            app:cardCornerRadius="10dp"
-            android:foreground="?android:attr/selectableItemBackground">
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardCornerRadius="10dp">
 
             <LinearLayout
 
@@ -53,12 +52,11 @@
         </androidx.cardview.widget.CardView>
 
 
-    </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/homeRV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pdd_card" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/homeRV"
-        android:layout_below="@+id/l"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-</RelativeLayout>
+    </RelativeLayout>
+</ScrollView>

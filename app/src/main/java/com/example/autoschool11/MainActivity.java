@@ -3,6 +3,7 @@ package com.example.autoschool11;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
@@ -40,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         appTheme = app_preferences.getInt("theme", 0);
         themeColor = appColor;
         constant.color = appColor;
-
         if (themeColor == 0) {
             setTheme(Constant.theme);
         } else if (appTheme == 0) {
@@ -57,6 +57,14 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION|
+                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
     }
 
     @Override
@@ -93,6 +101,18 @@ public class MainActivity extends AppCompatActivity {
 
     public static int getThemeColor() {
         return themeColor;
+    }
+
+    public void FullScreencall() {
+        if(Build.VERSION.SDK_INT > 11 && Build.VERSION.SDK_INT < 19) { // lower api
+            View v = this.getWindow().getDecorView();
+            v.setSystemUiVisibility(View.GONE);
+        } else if(Build.VERSION.SDK_INT >= 19) {
+            //for new api versions.
+            View decorView = getWindow().getDecorView();
+            int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY;
+            decorView.setSystemUiVisibility(uiOptions);
+        }
     }
 }
 

@@ -15,7 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.autoschool11.ProgressBarAnimation;
+import com.example.autoschool11.animation.ProgressBarAnimation;
 import com.example.autoschool11.R;
 import com.example.autoschool11.db.TrainingDataBaseHelper;
 

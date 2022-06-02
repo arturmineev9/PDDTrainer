@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?attr/background_color"
     android:orientation="vertical"
-    tools:context=".ui.rules.HomeFragment">
+    tools:context=".ui.rules.RulesFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

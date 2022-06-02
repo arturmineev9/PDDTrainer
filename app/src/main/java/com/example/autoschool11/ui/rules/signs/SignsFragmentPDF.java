@@ -25,7 +25,7 @@ public class SignsFragmentPDF extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_signs_vertical, container, false);
+        View view = inflater.inflate(R.layout.fragment_signs_pdf, container, false);
         PDFView pdfView = view.findViewById(R.id.pdfviewvertical);
         pdfView.fromAsset(pdfFile).load();
         return view;

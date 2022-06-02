@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.autoschool11.R;
-import com.example.autoschool11.db.DataBaseHelper;
 import com.example.autoschool11.db.DayStatisticsDataBaseHelper;
 import com.example.autoschool11.db.StatisticsDataBaseHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;

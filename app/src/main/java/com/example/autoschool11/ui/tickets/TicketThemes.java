@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,8 +26,7 @@ import com.example.autoschool11.R;
 import com.example.autoschool11.adapters.DbButtonAdapter;
 import com.example.autoschool11.adapters.HorizontalButtonAdapter;
 import com.example.autoschool11.db.DataBaseHelper;
-import com.example.autoschool11.db.DbButtonClass;
-import com.example.autoschool11.db.DbModelClass;
+import com.example.autoschool11.db.db_classes.DbButtonClass;
 import com.example.autoschool11.db.FavouritesDataBaseHelper;
 import com.example.autoschool11.db.TrainingDataBaseHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -77,7 +75,7 @@ public class TicketThemes extends Fragment implements DbButtonAdapter.DbButtonCl
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_ticket1, container, false);
+        View view = inflater.inflate(R.layout.fragment_ticket, container, false);
         BottomNavigationView navBar = getActivity().findViewById(R.id.nav_view);
         navBar.setVisibility(View.INVISIBLE);
         question = view.findViewById(R.id.db_question);
@@ -274,7 +272,7 @@ public class TicketThemes extends Fragment implements DbButtonAdapter.DbButtonCl
                     CardView bt_view = rv_view.itemView.findViewById(R.id.horizontal_card);
 
 
-                    if (Ticket1.getCount() > 1) {
+                    if (Ticket.getCount() > 1) {
                         ansbutton.setClickable(false);
                     } else {
                         if (position == DataBaseHelper.getCorrectans()) {

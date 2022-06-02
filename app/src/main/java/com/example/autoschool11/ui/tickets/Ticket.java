@@ -1,4 +1,4 @@
-package com.example.autoschool11.ui.tickets.modes;
+package com.example.autoschool11.ui.tickets;
 
 import android.content.Context;
 import android.database.SQLException;
@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
@@ -15,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Handler;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -22,73 +25,83 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.autoschool11.MainActivity;
 import com.example.autoschool11.R;
-import com.example.autoschool11.adapters.DbButtonAdapter;
 import com.example.autoschool11.adapters.HorizontalButtonAdapter;
 import com.example.autoschool11.db.DataBaseHelper;
+import com.example.autoschool11.adapters.DbButtonAdapter;
 import com.example.autoschool11.db.db_classes.DbButtonClass;
 import com.example.autoschool11.db.FavouritesDataBaseHelper;
+import com.example.autoschool11.db.MistakesDataBaseHelper;
 import com.example.autoschool11.db.TrainingDataBaseHelper;
-import com.example.autoschool11.ui.tickets.Ticket;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 
-public class TrainingFragmentSolution extends Fragment implements DbButtonAdapter.DbButtonClickListener, HorizontalButtonAdapter.HorizontalButtonClickListener, View.OnClickListener {
-    int knowing_id;
-    ArrayList<Integer> increase_id;
-    ArrayList<Integer> decrease_id;
+public class Ticket extends Fragment implements DbButtonAdapter.DbButtonClickListener, HorizontalButtonAdapter.HorizontalButtonClickListener, View.OnClickListener {
     ArrayList<DbButtonClass> dbButtonClassArrayList;
     RecyclerView recyclerViewans;
     RecyclerView recyclerViewhorizontal;
     static int i;
-    int table_length;
+    int end;
+    String ticket_number;
     String img;
     public DataBaseHelper mDBHelper;
     public SQLiteDatabase mDb;
     Context context;
-    int[] chooseansthemes;
     static int count;
-    int countans;
+    int ticketstart;
     TextView question;
+    TextView questionnumber;
+    int countans;
     ImageView image_question;
-    static int question_number = 1;
     ImageView favourite_img;
     TextView favourite_txt;
-    int question_number0 = 0;
-    String[] numbers;
-    Button btnnext;
+    int question_number = 1;
+    int ticket_number_1;
     TextView explanation;
+    Button btnnext;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            knowing_id = getArguments().getInt("knowing");
+            ticketstart = getArguments().getInt("ticketstart");
+            ticket_number = getArguments().getString("ticket");
+            i = getArguments().getInt("ticketstart");
+            end = getArguments().getInt("ticketend");
+            ticket_number_1 = getArguments().getInt("ticket_number");
         }
+    }
+
+    public static void setI(int i) {
+        Ticket.i = i;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
+        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Билет №" + ticket_number_1);
         View view = inflater.inflate(R.layout.fragment_ticket, container, false);
+
         BottomNavigationView navBar = getActivity().findViewById(R.id.nav_view);
         navBar.setVisibility(View.GONE);
+
         question = view.findViewById(R.id.db_question);
+        explanation = view.findViewById(R.id.explanation);
         image_question = view.findViewById(R.id.db_image);
         mDBHelper = new DataBaseHelper(getContext());
         recyclerViewans = view.findViewById(R.id.ansRV);
         recyclerViewhorizontal = view.findViewById(R.id.horizontalRV);
-        increase_id = new ArrayList<>();
-        decrease_id = new ArrayList<>();
         favourite_img = view.findViewById(R.id.favourites_image);
         favourite_txt = view.findViewById(R.id.favourites_txt);
-        btnnext = view.findViewById(R.id.btnnext);
+        questionnumber = view.findViewById(R.id.questionnumbertxt);
         CardView favourites = view.findViewById(R.id.favourites_card);
         favourites.setOnClickListener(this);
-        explanation = view.findViewById(R.id.explanation);
+        btnnext = view.findViewById(R.id.btnnext);
 
         try {
             mDBHelper.updateDataBase();
@@ -101,26 +114,11 @@ public class TrainingFragmentSolution extends Fragment implements DbButtonAdapte
         } catch (SQLException mSQLException) {
             throw mSQLException;
         }
-        TrainingDataBaseHelper trainingDataBaseHelper = new TrainingDataBaseHelper(getContext());
 
-        ShowTrainingData(question_number);
-
-        if (trainingDataBaseHelper.getTrainingTableLength(knowing_id) > 21) {
-            numbers = new String[20];
-            for (int j = 0; j < 20; j++) {
-                numbers[j] = Integer.toString(j + 1);
-            }
-            table_length = 20;
-            chooseansthemes = new int[20];
-        } else {
-            numbers = new String[trainingDataBaseHelper.getTrainingTableLength(knowing_id)];
-            for (int j = 0; j < trainingDataBaseHelper.getTrainingTableLength(knowing_id); j++) {
-                numbers[j] = Integer.toString(j + 1);
-            }
-            table_length = trainingDataBaseHelper.getTrainingTableLength(knowing_id);
-            chooseansthemes = new int[trainingDataBaseHelper.getTrainingTableLength(knowing_id)];
+        String[] numbers = new String[20];
+        for (int j = 0; j < 20; j++) {
+            numbers[j] = Integer.toString(j + 1);
         }
-
 
         HorizontalButtonAdapter horizontalButtonAdapter = new HorizontalButtonAdapter(numbers, this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
@@ -128,115 +126,88 @@ public class TrainingFragmentSolution extends Fragment implements DbButtonAdapte
         recyclerViewhorizontal.setItemViewCacheSize(20);
         recyclerViewhorizontal.setAdapter(horizontalButtonAdapter);
 
-
+        ShowData(i);
         btnnext.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                if (question_number == table_length + 1) {
-                    for (int j = 0; j < table_length; j++) {
-                        if ((chooseansthemes[j]) == 0) {
-                            i = j;
-                            ShowTrainingData(i + 1);
+
+                if (i == end + 1) {
+                    for (int j = 0; j < 20; j++) {
+                        if ((chooseans[j]) == 0) {
+                            i = j + ticketstart;
+                            question_number = j + 1;
+                            ShowData(i);
                             break;
                         }
-                        if (j == table_length - 1) {
-                            TrainingDataBaseHelper dataBaseHelper = new TrainingDataBaseHelper(getContext());
+                        if (j == 19) {
                             Bundle bundle = new Bundle();
                             bundle.putInt("countans", countans);
-                            bundle.putInt("countquestions", table_length);
-                            dataBaseHelper.increaseArrayId(increase_id);
-                            dataBaseHelper.decreaseArrayId(decrease_id);
+                            bundle.putInt("ticket_number", Integer.parseInt(ticket_number));
+                            bundle.putInt("countquestions", 20);
                             NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
                             navController.navigate(R.id.ticketEndFragment, bundle);
                         }
+
                     }
 
 
-                    countans = 0;
+                    DbButtonAdapter.setCountans(0);
                 } else {
-
-                    if (chooseansthemes[question_number - 1] != 0) {
-                        int a = chooseansthemes[question_number - 1];
+                    if (chooseans[question_number - 1] != 0) {
+                        int a = chooseans[question_number - 1];
                         while (a != 0) {
-                            i++;
-                            question_number++;
-                            a = chooseansthemes[question_number - 1];
+                            if (question_number != 20) {
+                                i++;
+                                question_number++;
+                                a = chooseans[question_number - 1];
+                            }
+                            else {
+                                for (int j = 0; j < 20; j++) {
+                                    if ((chooseans[j]) == 0) {
+                                        i = j + ticketstart;
+                                        question_number = j + 1;
+                                        recyclerViewhorizontal.scrollToPosition(i);
+                                        ShowData(i);
+                                        break;
+                                    }
+                                }
+                            }
                         }
                     }
-                    ShowTrainingData(question_number);
+
+                    ShowData(i);
                 }
             }
         });
         return view;
     }
 
-    public void ShowTrainingData(int a) {
-        image_question.setVisibility(View.VISIBLE);
-        explanation.setVisibility(View.GONE);
-        btnnext.setVisibility(View.GONE);
-        TrainingDataBaseHelper dataBaseHelper = new TrainingDataBaseHelper(getContext());
-        question.setText(dataBaseHelper.getTrainingQuestions(knowing_id, dataBaseHelper.getTrainingId(a, knowing_id)));
-        mDBHelper.getTicketNumber(dataBaseHelper.getTrainingId(a, knowing_id));
-        explanation.setText(DataBaseHelper.getExplanation());
-        FavouritesDataBaseHelper favouritesDataBaseHelper = new FavouritesDataBaseHelper(getContext());
-        if (favouritesDataBaseHelper.isInFavourites(DataBaseHelper.get_id())) {
-            favourite_img.setImageResource(R.drawable.star_pressed);
-            favourite_txt.setText("Удалить из избранного");
-        } else {
-            favourite_img.setImageResource(R.drawable.star_button);
-            favourite_txt.setText("Добавить в избранное");
-        }
-        if (Integer.toString(DataBaseHelper.getBilet() + 1).length() == 1 && Integer.toString(DataBaseHelper.getNumber() + 1).length() == 1) {
-            img = "pdd" + "_0" + Integer.toString(DataBaseHelper.getBilet() + 1) + "_0" + (DataBaseHelper.getNumber() + 1);
-        } else if (Integer.toString(DataBaseHelper.getBilet() + 1).length() != 1 && Integer.toString(DataBaseHelper.getNumber() + 1).length() == 1) {
-            img = "pdd_" + Integer.toString(DataBaseHelper.getBilet() + 1) + "_0" + (DataBaseHelper.getNumber() + 1);
-        } else if (Integer.toString(DataBaseHelper.getBilet() + 1).length() == 1 && Integer.toString(DataBaseHelper.getNumber() + 1).length() != 1) {
-            img = "pdd_0" + Integer.toString(DataBaseHelper.getBilet() + 1) + "_" + (DataBaseHelper.getNumber() + 1);
-        } else
-            img = "pdd_" + Integer.toString(DataBaseHelper.getBilet() + 1) + "_" + (DataBaseHelper.getNumber() + 1);
-        try {
-            int id = getResources().getIdentifier("com.example.autoschool11:drawable/" + img, null, null);
-            Toast toast = Toast.makeText(getContext(), id, Toast.LENGTH_SHORT);
-            image_question.setImageResource(id);
-        } catch (Exception e) {
-            image_question.setVisibility(View.GONE);
-        }
-
-
-        dbButtonClassArrayList = dataBaseHelper.getTrainingAnswers(dataBaseHelper.getTrainingId(question_number, knowing_id));
-        count = 0;
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context) {
-            @Override
-            public boolean canScrollVertically() {
-                return false;
-            }
-        };
-
-        DbButtonAdapter dbButtonAdapter = new DbButtonAdapter(dbButtonClassArrayList, this);
-        recyclerViewans.setLayoutManager(linearLayoutManager);
-        recyclerViewans.setAdapter(dbButtonAdapter);
-        question_number++;
-        i++;
+    public static int getCount() {
+        return count;
     }
+
+    int[] chooseans = new int[20];
 
     @Override
     public void onButtonClick(int position) {
+        recyclerViewhorizontal.scrollToPosition(question_number - 1);
         if (count < 1) {
-            postAndNotifyHorizontalAdapter(new Handler(), recyclerViewans, question_number, position);
+            postAndNotifyHorizontalAdapter(new Handler(), i, question_number, position);
         }
         count++;
 
-    }
 
+    }
 
     @Override
     public void onHorizontalButtonClick(int position) {
-        i = position;
+
+        i = position + ticketstart;
         question_number = position + 1;
-        question_number0 = position;
-        ShowTrainingData(question_number);
-        postAndNotifyAdapter(new Handler(), recyclerViewans, i, position);
+        ShowData(ticketstart + position);
+        postAndNotifyAdapter(new Handler(), recyclerViewans, question_number, position);
+
     }
 
     protected void postAndNotifyAdapter(final Handler handler, final RecyclerView recyclerView, int question_number, int position) {
@@ -244,20 +215,22 @@ public class TrainingFragmentSolution extends Fragment implements DbButtonAdapte
         handler.post(new Runnable() {
             @Override
             public void run() {
-                if (recyclerView.findViewHolderForAdapterPosition(chooseansthemes[position] - 1) != null) {
-
-
-                    if (chooseansthemes[position] != 0) {
-                        RecyclerView.ViewHolder ans_view = recyclerView.findViewHolderForAdapterPosition(chooseansthemes[position] - 1);
+                if (recyclerView.findViewHolderForLayoutPosition(chooseans[question_number - 2] - 1) != null) {
+                    if (chooseans[question_number - 2] != 0) {
+                        RecyclerView.ViewHolder ans_view = recyclerView.findViewHolderForLayoutPosition(chooseans[question_number - 2] - 1);
                         RecyclerView.ViewHolder right_ans = recyclerViewans.findViewHolderForAdapterPosition(DataBaseHelper.getCorrectans());
+                        RecyclerView.ViewHolder picked_ans = recyclerViewans.findViewHolderForAdapterPosition(position);
                         CardView ansbutton = ans_view.itemView.findViewById(R.id.ans_card);
                         CardView rightbutton = right_ans.itemView.findViewById(R.id.ans_card);
-                        if (chooseansthemes[position] - 1 == DataBaseHelper.getCorrectans()) {
-                            ansbutton.setCardBackgroundColor(Color.GREEN);
+                        count = 1;
+                        if (chooseans[question_number - 2] - 1 == DataBaseHelper.getCorrectans()) {
+                            ansbutton.setCardBackgroundColor(Color.argb(255, 92, 184, 92));
                         } else {
-                            ansbutton.setCardBackgroundColor(Color.RED);
+                            ansbutton.setCardBackgroundColor(Color.argb(255, 255, 0, 0));
                             rightbutton.setCardBackgroundColor(Color.argb(255, 92, 184, 92));
                         }
+                        btnnext.setVisibility(View.VISIBLE);
+                        explanation.setVisibility(View.VISIBLE);
                     }
 
                 } else {
@@ -268,12 +241,12 @@ public class TrainingFragmentSolution extends Fragment implements DbButtonAdapte
         });
     }
 
-    public void postAndNotifyHorizontalAdapter(final Handler handler, final RecyclerView recyclerView, int question_number, int position) {
+    public void postAndNotifyHorizontalAdapter(final Handler handler, int id, int question_number, int position) {
         TrainingDataBaseHelper trainingDataBaseHelper = new TrainingDataBaseHelper(getContext());
-        DataBaseHelper dataBaseHelper = new DataBaseHelper(getContext());
         handler.post(new Runnable() {
             @Override
             public void run() {
+                MistakesDataBaseHelper dataBaseHelper = new MistakesDataBaseHelper(getContext());
                 if (recyclerViewhorizontal.findViewHolderForAdapterPosition(question_number - 2) != null) {
                     recyclerViewhorizontal.scrollToPosition(question_number - 1);
                     RecyclerView.ViewHolder ans_view = recyclerViewans.findViewHolderForAdapterPosition(position);
@@ -283,40 +256,96 @@ public class TrainingFragmentSolution extends Fragment implements DbButtonAdapte
                     RecyclerView.ViewHolder rv_view = recyclerViewhorizontal.findViewHolderForAdapterPosition(question_number - 2);
                     CardView bt_view = rv_view.itemView.findViewById(R.id.horizontal_card);
 
-
                     if (Ticket.getCount() > 1) {
                         ansbutton.setClickable(false);
                     } else {
                         if (position == DataBaseHelper.getCorrectans()) {
                             ansbutton.setCardBackgroundColor(Color.argb(255, 92, 184, 92));
                             countans++;
-                            increase_id.add(trainingDataBaseHelper.getTrainingId(question_number - 1, knowing_id));
+
+
                         } else {
                             ansbutton.setCardBackgroundColor(Color.argb(255, 255, 0, 0));
                             right_button.setCardBackgroundColor(Color.argb(255, 92, 184, 92));
-                            decrease_id.add(trainingDataBaseHelper.getTrainingId(question_number - 1, knowing_id));
+                            dataBaseHelper.insertMistake(id - 1);
+                            trainingDataBaseHelper.decreaseKnowingID(id - 1);
                         }
                         btnnext.setVisibility(View.VISIBLE);
                         explanation.setVisibility(View.VISIBLE);
-
-                        if (position == DataBaseHelper.getCorrectans()) {
-                            bt_view.setCardBackgroundColor(Color.GREEN);
-                        } else {
-                            bt_view.setCardBackgroundColor(Color.RED);
-                        }
-                        chooseansthemes[question_number - 2] = position + 1;
-
+                        trainingDataBaseHelper.increaseKnowingID(id - 1);
                     }
+
+
+                    if (position == DataBaseHelper.getCorrectans()) {
+                        bt_view.setCardBackgroundColor(Color.GREEN);
+                    } else {
+                        bt_view.setCardBackgroundColor(Color.RED);
+                    }
+                    chooseans[question_number - 2] = position + 1;
+
+
                 } else {
                     //
-                    postAndNotifyHorizontalAdapter(handler, recyclerView, question_number, position);
+                    postAndNotifyHorizontalAdapter(handler, id, question_number, position);
                 }
             }
         });
     }
 
-    public static void setQuestion_number(int question_number) {
-        TrainingFragmentSolution.question_number = question_number;
+
+    public void ShowData(int a) {
+        recyclerViewhorizontal.scrollToPosition(question_number - 1);
+        explanation.setVisibility(View.GONE);
+        btnnext.setVisibility(View.GONE);
+        image_question.setVisibility(View.VISIBLE);
+        FavouritesDataBaseHelper dataBaseHelper = new FavouritesDataBaseHelper(getContext());
+        if (dataBaseHelper.isInFavourites(i)) {
+            favourite_img.setImageResource(R.drawable.star_pressed);
+            favourite_txt.setText("Удалить из избранного");
+        } else {
+            favourite_img.setImageResource(R.drawable.star_button);
+            favourite_txt.setText("Добавить в избранное");
+        }
+        questionnumber.setText("Вопрос " + question_number + " / " + 20);
+        if (Integer.toString(question_number).length() == 1) {
+            img = "pdd_" + ticket_number + "_0" + question_number;
+        } else {
+            img = "pdd_" + ticket_number + "_" + question_number;
+        }
+        question_number++;
+        try {
+            int id = getResources().getIdentifier("com.example.autoschool11:drawable/" + img, null, null);
+            Toast toast = Toast.makeText(getContext(), id, Toast.LENGTH_SHORT);
+            image_question.setImageResource(id);
+        } catch (Exception e) {
+            //image_question.setImageResource(R.drawable.nodrawing);
+            image_question.setVisibility(View.GONE);
+        }
+
+
+        dbButtonClassArrayList = mDBHelper.getAnswers(a);
+        count = 0;
+        mDBHelper.getAllData(a);
+        explanation.setText(DataBaseHelper.getExplanation());
+        question.setText(DataBaseHelper.getQuestion());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        };
+        DbButtonAdapter dbButtonAdapter = new DbButtonAdapter(dbButtonClassArrayList, Ticket.this);
+        recyclerViewans.setLayoutManager(linearLayoutManager);
+        recyclerViewans.setAdapter(dbButtonAdapter);
+        i++;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.settings_menu, menu);
+        for (int i = 0; i < menu.size(); i++)
+            menu.getItem(i).setVisible(false);
     }
 
     @Override
@@ -325,11 +354,11 @@ public class TrainingFragmentSolution extends Fragment implements DbButtonAdapte
         TextView favourite_txt = view.findViewById(R.id.favourites_txt);
         FavouritesDataBaseHelper favouritesDataBaseHelper = new FavouritesDataBaseHelper(getContext());
         if (favourite_txt.getText().equals("Добавить в избранное")) {
-            favouritesDataBaseHelper.insertFavourite(DataBaseHelper.get_id());
+            favouritesDataBaseHelper.insertFavourite(i - 1);
             favourite_img.setImageResource(R.drawable.star_pressed);
             favourite_txt.setText("Удалить из избранного");
         } else {
-            favouritesDataBaseHelper.deleteFavourite(DataBaseHelper.get_id());
+            favouritesDataBaseHelper.deleteFavourite(i - 1);
             favourite_img.setImageResource(R.drawable.star_button);
             favourite_txt.setText("Добавить в избранное");
         }

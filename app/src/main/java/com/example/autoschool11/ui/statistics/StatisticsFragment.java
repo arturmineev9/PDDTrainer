@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +12,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.autoschool11.MainActivity;
-import com.example.autoschool11.ProgressBarAnimation;
+import com.example.autoschool11.animation.ProgressBarAnimation;
 import com.example.autoschool11.R;
 import com.example.autoschool11.db.DayStatisticsDataBaseHelper;
-import com.example.autoschool11.db.IntensityClass;
+import com.example.autoschool11.db.db_classes.IntensityClass;
 import com.example.autoschool11.db.StatisticsDataBaseHelper;
 import com.example.autoschool11.db.TrainingDataBaseHelper;
 import com.example.autoschool11.theme_changer.Constant;
@@ -26,10 +25,8 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
-import com.github.mikephil.charting.utils.ViewPortHandler;
 
 import java.util.ArrayList;
 
@@ -61,7 +58,6 @@ public class StatisticsFragment extends Fragment {
         for (int i = 0; i < intensityClassArrayList.size(); i++) {
             String date = intensityClassArrayList.get(i).getDate();
             int result = intensityClassArrayList.get(i).getResult();
-            Log.d("res", String.valueOf(result));
             barEntryArrayList.add(new BarEntry(i, result));
             dates.add(date);
         }

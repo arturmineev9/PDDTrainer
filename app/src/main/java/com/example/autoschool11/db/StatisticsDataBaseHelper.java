@@ -163,29 +163,7 @@ public class StatisticsDataBaseHelper extends SQLiteOpenHelper {
         return full_count;
     }
 
-    public void add10() {
-        for (int i = 1; i < 15; i++) {
-            SQLiteDatabase db = getReadableDatabase();
-            ContentValues cv = new ContentValues();
-            cv.put(COLUMN_RESULT, 20);
-            db.update(TABLE_NAME, cv, COLUMN_ID + "=" + i, null);
-        }
-    }
 
-    public void addthemes() {
-        DataBaseHelper dataBaseHelper = new DataBaseHelper(context);
-        TrainingDataBaseHelper trainingDataBaseHelper = new TrainingDataBaseHelper(context);
-        SQLiteDatabase db = getWritableDatabase();
-        SQLiteDatabase dbread = getReadableDatabase();
-        for (int i = 1; i < 12; i++){
-            Cursor cursor = dbread.rawQuery("select * from Results where _id = " + i, null);
-            ContentValues cv = new ContentValues();
-            cursor.moveToNext();
-            cv.put(COLUMN_RESULT_THEMES, cursor.getInt(4));
-            db.update(TABLE_NAME, cv, COLUMN_ID + "=" + i, null);
-            trainingDataBaseHelper.increaseArrayId(dataBaseHelper.getCategoryId(i));
-        }
-    }
 }
 
 

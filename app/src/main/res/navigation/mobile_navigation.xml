@@ -55,7 +55,7 @@
 
     <fragment
         android:id="@+id/navigation_rules"
-        android:name="com.example.autoschool11.ui.rules.HomeFragment"
+        android:name="com.example.autoschool11.ui.rules.RulesFragment"
         android:label="@string/title_rules"
         tools:layout="@layout/fragment_rules_bottom">
         <action
@@ -90,7 +90,7 @@
         tools:layout="@layout/fragment_rules1"/>
     <fragment
         android:id="@+id/finesFragment"
-        android:name="com.example.autoschool11.ui.rules.FinesFragment"
+        android:name="com.example.autoschool11.ui.rules.fines.FinesFragment"
         android:label="Штрафы"
         tools:layout="@layout/fragment_fines" />
     <fragment
@@ -150,28 +150,28 @@
     <fragment
         android:id="@+id/talkingFragment1"
         android:name="com.example.autoschool11.ui.rules.DPSTalking.TalkingFragmentPDF"
-        tools:layout="@layout/fragment_talking1" />
+        tools:layout="@layout/fragment_talking_pdf" />
     <fragment
         android:id="@+id/medicineFragment1"
         android:name="com.example.autoschool11.ui.rules.medicine.MedicineFragmentPDF"
-        tools:layout="@layout/fragment_medicine1" />
+        tools:layout="@layout/fragment_medicine_pdf" />
     <fragment
         android:id="@+id/examInfoFragment1"
         android:name="com.example.autoschool11.ui.rules.examinfo.ExamInfoFragmentPDF"
-        tools:layout="@layout/fragment_exam_info1" />
+        tools:layout="@layout/fragment_exam_info_pdf" />
     <fragment
         android:id="@+id/regionCodesFragment"
-        android:name="com.example.autoschool11.ui.rules.RegionCodesFragment"
+        android:name="com.example.autoschool11.ui.rules.region_codes.RegionCodesFragment"
         android:label="Коды регионов"
         tools:layout="@layout/fragment_region_codes" />
     <fragment
         android:id="@+id/signsFragmentVertical"
         android:name="com.example.autoschool11.ui.rules.signs.SignsFragmentPDF"
-        tools:layout="@layout/fragment_signs_vertical" />
+        tools:layout="@layout/fragment_signs_pdf" />
     <fragment
         android:id="@+id/ticket1"
-        android:name="com.example.autoschool11.ui.tickets.Ticket1"
-        tools:layout="@layout/fragment_ticket1">
+        android:name="com.example.autoschool11.ui.tickets.Ticket"
+        tools:layout="@layout/fragment_ticket">
         <action
             android:id="@+id/action_ticket1_to_ticketEndFragment"
             app:destination="@id/ticketEndFragment" />

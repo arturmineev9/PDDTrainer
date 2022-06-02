@@ -6,24 +6,9 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Bundle;
-import android.text.Layout;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.view.menu.MenuView;
-
-import com.example.autoschool11.MainActivity;
-import com.example.autoschool11.R;
-import com.example.autoschool11.ui.tickets.Ticket1;
+import com.example.autoschool11.db.db_classes.DbButtonClass;
 
 import java.io.File;
 import java.io.FileOutputStream;

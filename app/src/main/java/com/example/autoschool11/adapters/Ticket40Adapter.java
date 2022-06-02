@@ -9,7 +9,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.autoschool11.ProgressBarAnimation;
 import com.example.autoschool11.R;
 
 public class Ticket40Adapter extends RecyclerView.Adapter<Ticket40Adapter.ViewHolder> {

@@ -14,25 +14,21 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.autoschool11.MainActivity;
 import com.example.autoschool11.R;
 import com.example.autoschool11.adapters.DbButtonAdapter;
 import com.example.autoschool11.adapters.HorizontalButtonAdapter;
 import com.example.autoschool11.db.DataBaseHelper;
-import com.example.autoschool11.db.DbButtonClass;
-import com.example.autoschool11.db.FavouritesDataBaseHelper;
+import com.example.autoschool11.db.db_classes.DbButtonClass;
 import com.example.autoschool11.db.MistakesDataBaseHelper;
 import com.example.autoschool11.db.TrainingDataBaseHelper;
-import com.example.autoschool11.ui.tickets.Ticket1;
+import com.example.autoschool11.ui.tickets.Ticket;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.IOException;
@@ -77,7 +73,7 @@ public class SignsTestFragment extends Fragment implements DbButtonAdapter.DbBut
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setHasOptionsMenu(true);
-        View view = inflater.inflate(R.layout.fragment_ticket1, container, false);
+        View view = inflater.inflate(R.layout.fragment_ticket, container, false);
         BottomNavigationView navBar = getActivity().findViewById(R.id.nav_view);
         navBar.setVisibility(View.GONE);
         question = view.findViewById(R.id.db_question);
@@ -175,7 +171,7 @@ public class SignsTestFragment extends Fragment implements DbButtonAdapter.DbBut
                     RecyclerView.ViewHolder right_ans = recyclerViewans.findViewHolderForAdapterPosition(DataBaseHelper.getCorrectans());
                     CardView right_button = right_ans.itemView.findViewById(R.id.ans_card);
                     CardView ansbutton = ans_view.itemView.findViewById(R.id.ans_card);
-                    if (Ticket1.getCount() > 1) {
+                    if (Ticket.getCount() > 1) {
                         ansbutton.setClickable(false);
                     } else {
                         if (position == DataBaseHelper.getCorrectans()) {

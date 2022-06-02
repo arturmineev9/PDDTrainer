@@ -13,7 +13,6 @@ import android.graphics.drawable.shapes.OvalShape;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -123,14 +122,6 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         dataBaseHelper.restartStatisticsDB();
         mistakesDataBaseHelper.restartMistakes();
         statisticsDataBaseHelper.restartDayStatisticsDB();
-        //DataBaseHelper dataBaseHelper1 = new DataBaseHelper(getBaseContext());
-        //dataBaseHelper1.changeExplanation();
-        dataBaseHelper.add10();
-        trainingDataBaseHelper.addTraining2();
-        trainingDataBaseHelper.addTraining3();
-        trainingDataBaseHelper.addTraining4();
-        statisticsDataBaseHelper.addDay();
-        dataBaseHelper.addthemes();
         Toast.makeText(getBaseContext(), "Статистика сброшена!", Toast.LENGTH_SHORT).show();
     }
 }

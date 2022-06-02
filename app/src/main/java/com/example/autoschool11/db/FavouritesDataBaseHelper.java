@@ -5,7 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
+
+import com.example.autoschool11.db.db_classes.DbButtonClass;
 
 import java.util.ArrayList;
 
@@ -143,10 +144,6 @@ public class FavouritesDataBaseHelper extends SQLiteOpenHelper {
         return cursor.getInt(0);
     }
 
-    public void restartFavourites() {
-        SQLiteDatabase db = getWritableDatabase();
-        db.delete(TABLE_NAME, null, null);
-    }
 
     public static String getExplanation() {
         return explanation;

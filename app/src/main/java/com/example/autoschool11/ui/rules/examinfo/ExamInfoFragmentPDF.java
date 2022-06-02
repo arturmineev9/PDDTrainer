@@ -25,7 +25,7 @@ public class ExamInfoFragmentPDF extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_exam_info1, container, false);
+        View view = inflater.inflate(R.layout.fragment_exam_info_pdf, container, false);
         PDFView pdfView = view.findViewById(R.id.pdfviewexaminfo1);
         pdfView.fromAsset(pdfFile).load();
         return view;

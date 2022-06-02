@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import androidx.annotation.Nullable;
+import com.example.autoschool11.db.db_classes.DbButtonClass;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -171,6 +171,7 @@ public class TrainingDataBaseHelper extends SQLiteOpenHelper {
         cursor.moveToNext();
         return cursor.getInt(2);
     }
+
     public int getKnowingCount(){
         int res = 0;
         SQLiteDatabase db = getReadableDatabase();
@@ -183,36 +184,4 @@ public class TrainingDataBaseHelper extends SQLiteOpenHelper {
         return res;
     }
 
-    public void addTraining2() {
-        SQLiteDatabase db = getWritableDatabase();
-        Random random = new Random();
-        for (int i = 1; i < 132; i++) {
-            ContentValues cv = new ContentValues();
-            cv.put(COLUMN_ID, i);
-            cv.put(COLUMN_KNOWING, 2);
-            db.update(TABLE_NAME, cv, COLUMN_ID + "=" + i, null);
-        }
-    }
-
-    public void addTraining3() {
-        SQLiteDatabase db = getWritableDatabase();
-        Random random = new Random();
-        for (int i = 132; i < 227; i++) {
-            ContentValues cv = new ContentValues();
-            cv.put(COLUMN_ID, i);
-            cv.put(COLUMN_KNOWING, 3);
-            db.update(TABLE_NAME, cv, COLUMN_ID + "=" + i, null);
-        }
-    }
-
-    public void addTraining4() {
-        SQLiteDatabase db = getWritableDatabase();
-        Random random = new Random();
-        for (int i = 227; i < 281; i++) {
-            ContentValues cv = new ContentValues();
-            cv.put(COLUMN_ID, i);
-            cv.put(COLUMN_KNOWING, 4);
-            db.update(TABLE_NAME, cv, COLUMN_ID + "=" + i, null);
-        }
-    }
 }

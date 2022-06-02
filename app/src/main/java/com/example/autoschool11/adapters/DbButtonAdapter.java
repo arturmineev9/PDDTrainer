@@ -1,7 +1,5 @@
 package com.example.autoschool11.adapters;
 
-import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +10,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.autoschool11.R;
-import com.example.autoschool11.db.DataBaseHelper;
-import com.example.autoschool11.db.DbButtonClass;
-import com.example.autoschool11.db.MistakesDataBaseHelper;
-import com.example.autoschool11.ui.tickets.Ticket1;
+import com.example.autoschool11.db.db_classes.DbButtonClass;
 
 import java.util.ArrayList;
 

@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.rules.fines.FinesFragment">
+    tools:context=".ui.rules.signs.SignsFragmentPDF">
 
     <com.github.barteksc.pdfviewer.PDFView
-        android:id="@+id/pdfviewfines"
+        android:id="@+id/pdfviewvertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

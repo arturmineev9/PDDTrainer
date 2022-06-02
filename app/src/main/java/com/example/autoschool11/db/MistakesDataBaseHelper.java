@@ -6,11 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import android.widget.Toast;
 
-import androidx.annotation.Nullable;
-
-import com.github.mikephil.charting.data.BarEntry;
+import com.example.autoschool11.db.db_classes.DbButtonClass;
 
 import java.util.ArrayList;
 

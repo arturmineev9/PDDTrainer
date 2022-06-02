@@ -5,11 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
-import androidx.annotation.Nullable;
-
-import com.github.mikephil.charting.data.BarEntry;
+import com.example.autoschool11.db.db_classes.IntensityClass;
 
 import java.util.ArrayList;
 
@@ -58,7 +55,7 @@ public class DayStatisticsDataBaseHelper extends SQLiteOpenHelper {
             db.insert(TABLE_NAME, null, cv);
         } else {
             cv.put(COLUMN_RESULT, cursor.getInt(2) + results);
-            int res = db.update(TABLE_NAME, cv, "date = ?", new String[]{date});
+            db.update(TABLE_NAME, cv, "date = ?", new String[]{date});
         }
     }
 
@@ -80,13 +77,6 @@ public class DayStatisticsDataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         db.delete(TABLE_NAME, null, null);
     }
-    public void addDay(){
-        SQLiteDatabase db = getReadableDatabase();
-        for(int i = 24; i < 30; i++){
-            ContentValues cv = new ContentValues();
-            cv.put(COLUMN_DATE, Integer.toString(i) + "/05/2022");
-            cv.put(COLUMN_RESULT, Math.random() * 150 + 40);
-            db.insert(TABLE_NAME, null, cv);
-        }
-    }
+
+
 }

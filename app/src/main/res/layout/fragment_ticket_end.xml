@@ -7,19 +7,19 @@
 
 
     <TextView
+        android:id="@+id/successfultxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="20dp"
         android:layout_marginTop="30dp"
-        android:id="@+id/successfultxt"
-        android:fontFamily="@font/font1"/>
+        android:fontFamily="@font/font1"
+        android:gravity="center"
+        android:textSize="20sp" />
 
     <ImageView
         android:id="@+id/imageresults"
-        android:layout_below="@+id/successfultxt"
         android:layout_width="match_parent"
         android:layout_height="150dp"
+        android:layout_below="@+id/successfultxt"
         android:layout_marginTop="90dp" />
 
     <TextView
@@ -28,8 +28,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageresults"
         android:layout_marginTop="80dp"
-        android:gravity="center"
         android:fontFamily="@font/font1"
+        android:gravity="center"
         android:textColor="@color/black"
         android:textSize="30sp" />
 
@@ -38,9 +38,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/results"
-        android:fontFamily="@font/font1"
         android:layout_margin="30dp"
-        android:textColor="@color/white"
-        android:text="Вернутьcя назад"
-        android:background="@drawable/btn_exam"/>
+        android:background="@drawable/btn_exam"
+        android:fontFamily="@font/font1"
+        android:text="@string/go_back"
+        android:textColor="@color/white" />
 </RelativeLayout>

@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.rules.medicine.MedicineFragmentPDF">
+    tools:context=".ui.theory.medicine.MedicineFragmentPDF">
 
     <com.github.barteksc.pdfviewer.PDFView
         android:id="@+id/pdfviewmed1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 </FrameLayout>

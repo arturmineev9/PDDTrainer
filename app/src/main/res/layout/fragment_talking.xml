@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:background="?attr/background_color"
     android:orientation="vertical"
-    tools:context=".ui.rules.DPSTalking.TalkingFragment">
+    tools:context=".ui.theory.DPSTalking.TalkingFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rulesRV"

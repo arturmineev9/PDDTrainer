@@ -14,8 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.autoschool11.R;
-import com.example.autoschool11.db.DayStatisticsDataBaseHelper;
-import com.example.autoschool11.db.StatisticsDataBaseHelper;
+import com.example.autoschool11.databinding.FragmentTicketEndBinding;
+import com.example.autoschool11.db.DataBaseHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.text.DateFormat;
@@ -29,10 +29,8 @@ public class TicketEndFragment extends Fragment {
     int countquestions;
     int is_themes;
     int category;
-    TextView results;
-    ImageView imageresults;
-    Button btnback;
-    TextView successful_txt;
+    int isTraining;
+    protected FragmentTicketEndBinding binding;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,48 +41,49 @@ public class TicketEndFragment extends Fragment {
             ticket_number = getArguments().getInt("ticket_number");
             is_themes = getArguments().getInt("is_themes");
             category = getArguments().getInt("category");
+            isTraining = getArguments().getInt("isTraining");
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_ticket_end, container, false);
-        results = view.findViewById(R.id.results);
-        imageresults = view.findViewById(R.id.imageresults);
-        btnback = view.findViewById(R.id.backbutton);
-        successful_txt = view.findViewById(R.id.successfultxt);
+        binding = FragmentTicketEndBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
 
-        if (countans < countquestions - 2){
-            imageresults.setImageResource(R.drawable.fail);
-            successful_txt.setText("Билет не сдан.");
-        }
-        else if (countans == countquestions - 2 || countans == countquestions - 1) {
-            successful_txt.setText("Билет пройден успешно!");
-            imageresults.setImageResource(R.drawable.success);
-        }
-        else {
-            imageresults.setImageResource(R.drawable.success);
-            successful_txt.setText("Билет пройден успешно!");
-            results.setText(Integer.toString(countans) + "/" + countquestions);
-        }
-        btnback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        if (isTraining == 1) {
+            binding.successfultxt.setText("Хорошая работа, продолжайте тренироваться!");
+            binding.imageresults.setImageResource(R.drawable.success);
+        } else {
+            if (countans < countquestions - 2) {
+                binding.imageresults.setImageResource(R.drawable.fail);
+                binding.successfultxt.setText("Билет не сдан.");
+            } else if (countans == countquestions - 2 || countans == countquestions - 1) {
+                binding.successfultxt.setText("Билет пройден успешно!");
+                binding.imageresults.setImageResource(R.drawable.success);
+            } else {
+                binding.imageresults.setImageResource(R.drawable.success);
+                binding.successfultxt.setText("Билет пройден успешно!");
+                binding.results.setText(countans + "/" + countquestions);
+            }}
+            binding.backbutton.setOnClickListener(view1 -> {
                 NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
-                navController.navigate(R.id.navigation_tickets);
+                if (isTraining == 1){
+                    navController.navigate(R.id.trainingFragment);
+                } else {
+                    navController.navigate(R.id.navigation_tickets);
+                }
                 BottomNavigationView navBar = getActivity().findViewById(R.id.nav_view);
                 navBar.setVisibility(View.VISIBLE);
-            }
-        });
-        StatisticsDataBaseHelper dataBaseHelper = new StatisticsDataBaseHelper(getContext());
-        DayStatisticsDataBaseHelper dayStatisticsDataBaseHelper = new DayStatisticsDataBaseHelper(getContext());
-        dayStatisticsDataBaseHelper.insertDayResults(getDate(), countquestions);
+            });
+            DataBaseHelper databaseHelper = new DataBaseHelper(getContext());
+            databaseHelper.insertDayResults(getDate(), countquestions);
 
-        if (is_themes == 0){
-            dataBaseHelper.insertResults(ticket_number, countans);
-        } else {
-            dataBaseHelper.insertThemeResults(category, countans);
+            if (is_themes == 0) {
+                databaseHelper.insertResults(ticket_number, countans);
+            } else {
+                databaseHelper.insertThemeResults(category, countans);
+
         }
 
         BottomNavigationView navBar = getActivity().findViewById(R.id.nav_view);
@@ -97,5 +96,11 @@ public class TicketEndFragment extends Fragment {
         Date date = new Date();
         String cd = dateFormat.format(date);
         return cd;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

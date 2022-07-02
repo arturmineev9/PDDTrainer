@@ -11,162 +11,204 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/progresstext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:fontFamily="@font/font"
-            android:id="@+id/progresstext"
-            android:text="Прогресс"
-            android:textSize="18dp"/>
+            android:gravity="center"
+            android:text="@string/progress"
+            android:textSize="18dp" />
 
 
         <TextView
+            android:id="@+id/percent_prepare"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:fontFamily="@font/font1"
-            android:textStyle="bold"
-            android:id="@+id/percent_prepare"
             android:layout_below="@id/progresstext"
             android:layout_marginTop="80dp"
-            android:textSize="30sp"/>
+            android:fontFamily="@font/font"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <ProgressBar
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_centerInParent="true"
             android:id="@+id/circle_pg"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_below="@id/progresstext"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:indeterminateOnly="false"
-            android:progressDrawable="@drawable/circle_progressbar"
-            android:progress="60"/>
+            android:progress="60"
+            android:progressDrawable="@drawable/circle_progressbar" />
 
         <TextView
+            android:id="@+id/questiontxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="left"
-            android:fontFamily="@font/font1"
-            android:id="@+id/questiontxt"
             android:layout_below="@+id/circle_pg"
             android:layout_marginLeft="10dp"
-            android:text="Вопросы"/>
+            android:fontFamily="@font/font1"
+            android:gravity="left"
+            android:text="@string/questions" />
 
         <TextView
+            android:id="@+id/anscount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="right"
             android:layout_below="@+id/circle_pg"
             android:layout_marginRight="10dp"
             android:fontFamily="@font/font"
-            android:id="@+id/anscount"/>
+            android:gravity="right"
+            android:textColor="@color/black" />
 
         <ProgressBar
             android:id="@+id/progressbarstat"
+            style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:layout_below="@id/anscount"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:progressDrawable="@drawable/progress_bar"/>
+            android:layout_margin="10dp"
+            android:progressDrawable="@drawable/progress_bar" />
 
         <TextView
-            android:layout_width="match_parent"
             android:id="@+id/biletsstattxt"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="left"
-            android:fontFamily="@font/font1"
-            android:text="Билеты"
+            android:layout_below="@id/progressbarstat"
             android:layout_marginLeft="10dp"
-            android:layout_below="@id/progressbarstat"/>
+            android:fontFamily="@font/font1"
+            android:gravity="left"
+            android:text="@string/tickets" />
 
         <ProgressBar
             android:id="@+id/progressbarstickets"
+            style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            style="?android:attr/progressBarStyleHorizontal"
             android:layout_below="@+id/biletsstattxt"
+            android:layout_margin="10dp"
 
-            android:progressDrawable="@drawable/progress_bar"/>
+            android:progressDrawable="@drawable/progress_bar" />
 
         <TextView
             android:id="@+id/tickets20count"
             android:layout_width="165dp"
             android:layout_height="wrap_content"
-            android:gravity="right"
+            android:layout_below="@+id/progressbarstat"
             android:fontFamily="@font/font"
-            android:layout_below="@+id/progressbarstat" />
+            android:gravity="right"
+            android:textColor="@color/black" />
 
         <ProgressBar
             android:id="@+id/progressbarsthemes"
+            style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginBottom="10dp"
-            style="?android:attr/progressBarStyleHorizontal"
             android:layout_below="@+id/biletsstattxt"
-            android:progressDrawable="@drawable/progress_bar"/>
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:progressDrawable="@drawable/progress_bar" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Темы"
-            android:gravity="right"
+            android:layout_below="@+id/progressbarstat"
             android:layout_alignParentEnd="true"
             android:layout_marginRight="130dp"
             android:fontFamily="@font/font1"
-            android:layout_below="@+id/progressbarstat"/>
+            android:gravity="right"
+            android:text="@string/themes" />
 
         <TextView
             android:id="@+id/full_themes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="right"
-            android:fontFamily="@font/font"
             android:layout_below="@id/progressbarstat"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginRight="10dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/font"
+            android:gravity="right" />
 
         <View
+            android:id="@+id/view234"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="5dp"
-            android:id="@+id/view234"
             android:layout_below="@+id/progressbarstickets"
-            android:background="@color/black"/>
+            android:layout_marginTop="5dp"
+            android:background="@color/black" />
 
         <TextView
+            android:id="@+id/intensitytxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_below="@id/view234"
             android:layout_marginTop="10dp"
-            android:id="@+id/intensitytxt"
-            android:text="Интенсивность"
             android:fontFamily="@font/font"
-            android:textSize="18dp"/>
-
+            android:gravity="center"
+            android:text="@string/intensity"
+            android:textSize="18dp" />
 
 
         <TextView
+            android:id="@+id/stat_available"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="50dp"
             android:layout_below="@+id/intensitytxt"
-            android:text="Статистика недоступна! Для начала решите пару билетов."
+            android:layout_marginTop="50dp"
             android:fontFamily="@font/font1"
-            android:id="@+id/stat_available"/>
+            android:gravity="center"
+            android:text="@string/unavailable" />
 
         <com.github.mikephil.charting.charts.BarChart
             android:id="@+id/barChart"
             android:layout_width="match_parent"
-            android:layout_marginTop="20dp"
             android:layout_height="300dp"
-            android:layout_below="@+id/intensitytxt"/>
+            android:layout_below="@+id/intensitytxt"
+            android:layout_marginTop="20dp" />
+
+        <View
+            android:id="@+id/view345"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/barChart"
+            android:layout_marginTop="5dp"
+            android:background="@color/black" />
+
+
+        <TextView
+            android:id="@+id/performancetxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/view345"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/font"
+            android:gravity="center"
+            android:text="@string/performance"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/stat_available1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/performancetxt"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/font1"
+            android:gravity="center"
+            android:text="@string/unavailable" />
+
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pieChart"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_below="@+id/performancetxt"
+            android:layout_marginTop="10dp" />
+
 
     </RelativeLayout>
 </ScrollView>

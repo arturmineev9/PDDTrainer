@@ -1,28 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:orientation="vertical"
     android:id="@+id/btn_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/white"
-    android:layout_height="wrap_content">
+    android:orientation="vertical">
 
 
     <TextView
         android:id="@+id/recyclerbutton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/font"
-        android:textSize="16sp"
-        android:layout_marginTop="12.5dp"
         android:layout_marginLeft="5dp"
+        android:layout_marginTop="12.5dp"
         android:layout_marginBottom="12.5dp"
-        />
+        android:fontFamily="@font/font"
+        android:textSize="16sp" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/colorSettings"/>
-
+        android:background="@color/colorSettings" />
 
 
 </androidx.cardview.widget.CardView>

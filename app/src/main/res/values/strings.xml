@@ -2,8 +2,31 @@
     <string name="app_name">Тренажер ПДД</string>
     <string name="title_main">Статистика</string>
     <string name="title_tickets">Тренировки</string>
-    <string name="title_rules">ПДД</string>
+    <string name="title_rules">Теория</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="go_back">Вернутьcя назад</string>
+    <string name="question">Вопрос</string>
+    <string name="next_question">Следующий вопрос</string>
+    <string name="pdd">Правлила дорожного движения</string>
+    <string name="settings">Настройки внешнего вида</string>
+    <string name="theme">Тема</string>
+    <string name="delete_stat">Сбросить статистику</string>
+    <string name="progress">Прогресс</string>
+    <string name="questions">Вопросы</string>
+    <string name="tickets">Билеты</string>
+    <string name="themes">Темы</string>
+    <string name="intensity">Интенсивность</string>
+    <string name="delete_from_favourite">Удалить из избранного</string>
+    <string name="next">Далее</string>
+    <string name="modes">Режимы</string>
+    <string name="know_awesome">Знаю отлично</string>
+    <string name="from_800_questions">из 800 вопросов</string>
+    <string name="not_know">Не знаю</string>
+    <string name="know">Знаю</string>
+    <string name="know_good">Знаю хорошо</string>
+    <string name="begin_training">Начать тренировку</string>
+    <string name="unavailable">Статистика недоступна! Для начала решите пару билетов.</string>
+    <string name="performance">Успеваемость</string>
 
     <string-array name="rules_names">
         <item>1. Общие положения</item>

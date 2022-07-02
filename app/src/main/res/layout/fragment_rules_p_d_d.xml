@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:background="?attr/background_color"
     android:orientation="vertical"
-    tools:context=".ui.rules.pdd.RulesFragmentPDD">
+    tools:context=".ui.theory.pdd.RulesFragmentPDD">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rulesRV"

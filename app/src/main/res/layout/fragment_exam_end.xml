@@ -14,13 +14,13 @@
 
 
     <TextView
+        android:id="@+id/resulttxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/resulttxt"
         android:layout_below="@+id/imageresultsexam"
-        android:gravity="center"
         android:layout_marginTop="15dp"
-        android:textSize="24sp"/>
+        android:gravity="center"
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/results"
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/results"
         android:layout_margin="30dp"
-        android:textColor="@color/white"
-        android:text="Вернутьcя назад"
-        android:background="@drawable/btn_exam"/>
+        android:background="@drawable/btn_exam"
+        android:text="@string/go_back"
+        android:textColor="@color/white" />
 </RelativeLayout>

@@ -27,7 +27,7 @@
             android:layout_below="@+id/db_image"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="Вопрос" />
+            android:text="@string/question" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/ansRV"
@@ -50,7 +50,7 @@
             android:layout_below="@id/view123"
             android:layout_marginTop="20dp"
             android:background="@drawable/btn_exam"
-            android:text="Следующий вопрос"
+            android:text="@string/next_question"
             android:textColor="@color/white" />
 
 

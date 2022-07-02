@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.autoschool11.R;
 
-public class SignsAdapter extends RecyclerView.Adapter<SignsAdapter.ViewHolder> {
+public class SignsAdapter extends RecyclerView.Adapter<SignsAdapter.ViewHolder> { //адаптер recyclerview для знаков дорожного движения
     String[] signs;
     int[] images;
     public SignsClickListener msignsClickListener;

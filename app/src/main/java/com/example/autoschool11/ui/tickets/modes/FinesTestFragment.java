@@ -17,13 +17,11 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.autoschool11.R;
-import com.example.autoschool11.adapters.DbButtonAdapter;
-import com.example.autoschool11.db.DataBaseHelper;
+import com.example.autoschool11.adapters.AnswersAdapter;
+import com.example.autoschool11.databinding.FragmentTicketBinding;
+import com.example.autoschool11.db.PDD_DataBaseHelper;
 import com.example.autoschool11.db.db_classes.DbButtonClass;
 import com.example.autoschool11.ui.tickets.Ticket;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -31,23 +29,19 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
-public class FinesTestFragment extends Fragment implements DbButtonAdapter.DbButtonClickListener {
+// тест по штрафам
+public class FinesTestFragment extends Fragment implements AnswersAdapter.DbButtonClickListener {
 
     ArrayList<DbButtonClass> dbButtonClassArrayList;
-    RecyclerView recyclerViewans;
-    RecyclerView recyclerViewhorizontal;
     static int i;
-    public DataBaseHelper mDBHelper;
+    public PDD_DataBaseHelper mDBHelper;
     public SQLiteDatabase mDb;
     Context context;
     static int count;
     int ticketstart;
-    TextView question;
-    TextView quuestionnumber;
     int countans;
-    int question_number = 1;
-    Button btnnext;
+    protected FragmentTicketBinding binding;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,22 +56,16 @@ public class FinesTestFragment extends Fragment implements DbButtonAdapter.DbBut
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setHasOptionsMenu(true);
-        View view = inflater.inflate(R.layout.fragment_ticket, container, false);
+        binding = FragmentTicketBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+
         BottomNavigationView navBar = getActivity().findViewById(R.id.nav_view);
         navBar.setVisibility(View.GONE);
-        CardView favourite_card = view.findViewById(R.id.favourites_card);
-        favourite_card.setVisibility(View.GONE);
-        TextView explanation = view.findViewById(R.id.explanation);
-        explanation.setVisibility(View.GONE);
-        ImageView image = view.findViewById(R.id.db_image);
-        image.setVisibility(View.GONE);
-        question = view.findViewById(R.id.db_question);
-        mDBHelper = new DataBaseHelper(getContext());
-        recyclerViewans = view.findViewById(R.id.ansRV);
-        recyclerViewans.setPadding(0,100,0,0);
-        recyclerViewhorizontal = view.findViewById(R.id.horizontalRV);
-        quuestionnumber = view.findViewById(R.id.questionnumbertxt);
-        btnnext = view.findViewById(R.id.btnnext);
+        binding.favouritesCard.setVisibility(View.GONE);
+        binding.explanation.setVisibility(View.GONE);
+        binding.dbImage.setVisibility(View.GONE);
+        mDBHelper = new PDD_DataBaseHelper(getContext());
+        binding.ansRV.setPadding(0, 100, 0, 0);
 
         try {
             mDBHelper.updateDataBase();
@@ -92,45 +80,38 @@ public class FinesTestFragment extends Fragment implements DbButtonAdapter.DbBut
         }
 
 
-        ShowData(i);
+        ShowFinesQuestion(i);
 
 
-        btnnext.setOnClickListener(new View.OnClickListener() {
+        binding.btnnext.setOnClickListener(view1 -> { // обработка нажатия на кнопку "Далее"
 
-            @Override
-            public void onClick(View view) {
-
-                if (i == 10) {
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("countans", countans);
-                    bundle.putInt("countquestions", 10);
-                    NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
-                    navController.navigate(R.id.ticketEndFragment, bundle);
+            if (i == 10) {
+                Bundle bundle = new Bundle();
+                bundle.putInt("countans", countans);
+                bundle.putInt("countquestions", 10);
+                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
+                navController.navigate(R.id.ticketEndFragment, bundle);
 
 
-                DbButtonAdapter.setCountans(0);
-            } else
+                AnswersAdapter.setCountans(0);
+            } else {
 
-            {
-
-                ShowData(i);
+                ShowFinesQuestion(i);
             }
-        }
-    });
+        });
         return view;
-}
+    }
 
     public static int getCount() {
         return count;
     }
 
-    int[] chooseans = new int[10];
 
     @Override
-    public void onButtonClick(int position) {
+    public void onButtonClick(int position) { // обработка нажатия на вариант ответа
 
         if (count < 1) {
-            postAndNotifyHorizontalAdapter(new Handler(), i, question_number, position);
+            onAnswerClick(new Handler(), position);
         }
         count++;
 
@@ -138,56 +119,57 @@ public class FinesTestFragment extends Fragment implements DbButtonAdapter.DbBut
     }
 
 
-    public void postAndNotifyHorizontalAdapter(final Handler handler, int id, int question_number, int position) {
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                RecyclerView.ViewHolder ans_view = recyclerViewans.findViewHolderForAdapterPosition(position);
-                RecyclerView.ViewHolder right_ans = recyclerViewans.findViewHolderForAdapterPosition(DataBaseHelper.getCorrectans());
-                CardView right_button = right_ans.itemView.findViewById(R.id.ans_card);
-                CardView ansbutton = ans_view.itemView.findViewById(R.id.ans_card);
+    public void onAnswerClick(Handler handler, int position) { // обработка нажатия на вариант ответа
+        handler.post(() -> {
+            RecyclerView.ViewHolder ans_view = binding.ansRV.findViewHolderForAdapterPosition(position);
+            RecyclerView.ViewHolder right_ans = binding.ansRV.findViewHolderForAdapterPosition(PDD_DataBaseHelper.getCorrectans());
+            CardView right_button = right_ans.itemView.findViewById(R.id.ans_card);
+            CardView ansbutton = ans_view.itemView.findViewById(R.id.ans_card);
 
-                if (Ticket.getCount() > 1) {
-                    ansbutton.setClickable(false);
+            if (Ticket.getCount() > 1) {
+                ansbutton.setClickable(false);
+            } else {
+                if (position == PDD_DataBaseHelper.getCorrectans()) {
+                    ansbutton.setCardBackgroundColor(Color.argb(255, 92, 184, 92));
+                    countans++;
+
+
                 } else {
-                    if (position == DataBaseHelper.getCorrectans()) {
-                        ansbutton.setCardBackgroundColor(Color.argb(255, 92, 184, 92));
-                        countans++;
-
-
-                    } else {
-                        ansbutton.setCardBackgroundColor(Color.argb(255, 255, 0, 0));
-                        right_button.setCardBackgroundColor(Color.argb(255, 92, 184, 92));
-                    }
-                    btnnext.setVisibility(View.VISIBLE);
+                    ansbutton.setCardBackgroundColor(Color.argb(255, 255, 0, 0));
+                    right_button.setCardBackgroundColor(Color.argb(255, 92, 184, 92));
                 }
-
+                binding.btnnext.setVisibility(View.VISIBLE);
             }
 
         });
     }
 
 
-    public void ShowData(int a) {
-        quuestionnumber.setText(Integer.toString(a + 1) + "/10");
-        btnnext.setVisibility(View.GONE);
+    public void ShowFinesQuestion(int a) { // показ вопроса
+        binding.btnnext.setVisibility(View.GONE);
         dbButtonClassArrayList = mDBHelper.getFinesAnswers(a);
         count = 0;
         mDBHelper.getFinesQuestions(a);
-        question.setText(DataBaseHelper.getQuestion());
-        GridLayoutManager linearLayoutManager = new GridLayoutManager(context,2) {
+        binding.dbQuestion.setText(PDD_DataBaseHelper.getQuestion());
+        GridLayoutManager linearLayoutManager = new GridLayoutManager(context, 2) {
             @Override
             public boolean canScrollVertically() {
                 return false;
             }
         };
-        DbButtonAdapter dbButtonAdapter = new DbButtonAdapter(dbButtonClassArrayList, FinesTestFragment.this);
-        recyclerViewans.setLayoutManager(linearLayoutManager);
-        recyclerViewans.setAdapter(dbButtonAdapter);
+        AnswersAdapter answersAdapter = new AnswersAdapter(dbButtonClassArrayList, FinesTestFragment.this);
+        binding.ansRV.setLayoutManager(linearLayoutManager);
+        binding.ansRV.setAdapter(answersAdapter);
         i++;
     }
 
     public static void setI(int i) {
         FinesTestFragment.i = i;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

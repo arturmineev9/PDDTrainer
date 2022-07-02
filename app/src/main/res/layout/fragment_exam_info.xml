@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:background="?attr/background_color"
     android:orientation="vertical"
-    tools:context=".ui.rules.examinfo.ExamInfoFragment">
+    tools:context=".ui.theory.examinfo.ExamInfoFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rulesRV"

@@ -14,26 +14,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.autoschool11.R;
+import com.example.autoschool11.databinding.FragmentExamEndBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
 public class ExamEndFragment extends Fragment {
+
     int type_of_fail;
     int countans;
-    int ticket_number;
     int countquestions;
-    TextView result_txt;
-    TextView result;
-    ImageView imageresults;
-    Button btnback;
+    protected FragmentExamEndBinding binding;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-        type_of_fail = getArguments().getInt("type_of_fail");
-        countans = getArguments().getInt("countans");
-        countquestions = getArguments().getInt("countquestions");
+            type_of_fail = getArguments().getInt("type_of_fail");
+            countans = getArguments().getInt("countans");
+            countquestions = getArguments().getInt("countquestions");
         }
 
     }
@@ -41,27 +39,25 @@ public class ExamEndFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_exam_end, container, false);
-        result_txt = view.findViewById(R.id.resulttxt);
-        result = view.findViewById(R.id.results);
-        btnback = view.findViewById(R.id.backbuttonexam);
-        imageresults = view.findViewById(R.id.imageresultsexam);
-        if (type_of_fail == 0){
-            result_txt.setText("Вы сдали экзамен!");
-            imageresults.setImageResource(R.drawable.success);
-        } else if (type_of_fail == 1){
-            result_txt.setText("Экзамен не сдан! Вы допустили более 2-ух ошибок.");
-            imageresults.setImageResource(R.drawable.fail);
-        } else if (type_of_fail == 2) {
-            result_txt.setText("Экзамен не сдан! Вы допустили ошибку на дополнительных вопросах.");
-            imageresults.setImageResource(R.drawable.fail);
-        } else if (type_of_fail == 3){
-            result_txt.setText("Время вышло!");
-            imageresults.setImageResource(R.drawable.fail);
-        }
-        result.setText(Integer.toString(countans) + "/" + countquestions);
+        binding = FragmentExamEndBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
 
-        btnback.setOnClickListener(new View.OnClickListener() {
+        if (type_of_fail == 0) {
+            binding.resulttxt.setText("Вы сдали экзамен!");
+            binding.imageresultsexam.setImageResource(R.drawable.success);
+        } else if (type_of_fail == 1) {
+            binding.resulttxt.setText("Экзамен не сдан! Вы допустили более 2-ух ошибок.");
+            binding.imageresultsexam.setImageResource(R.drawable.fail);
+        } else if (type_of_fail == 2) {
+            binding.resulttxt.setText("Экзамен не сдан! Вы допустили ошибку на дополнительных вопросах.");
+            binding.imageresultsexam.setImageResource(R.drawable.fail);
+        } else if (type_of_fail == 3) {
+            binding.resulttxt.setText("Время вышло!");
+            binding.imageresultsexam.setImageResource(R.drawable.fail);
+        }
+        binding.results.setText(countans + "/" + countquestions);
+
+        binding.backbuttonexam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
@@ -71,5 +67,11 @@ public class ExamEndFragment extends Fragment {
             }
         });
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

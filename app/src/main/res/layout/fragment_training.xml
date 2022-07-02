@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="?attr/background_color"
     tools:context=".ui.tickets.modes.TrainingFragment">
 
@@ -11,28 +11,28 @@
         android:id="@+id/znayu_otlichno"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Знаю отлично"
+        android:layout_marginTop="100dp"
         android:fontFamily="@font/font1"
         android:gravity="center"
-        android:textSize="16dp"
-        android:layout_marginTop="100dp"/>
+        android:text="@string/know_awesome"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/otlichno_count"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/znayu_otlichno"
-        android:gravity="center"
         android:fontFamily="@font/font"
-        android:textSize="32dp"/>
+        android:gravity="center"
+        android:textSize="32sp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/otlichno_count"
         android:gravity="center"
-        android:textSize="16dp"
-        android:text="из 800 вопросов"/>
+        android:text="@string/from_800_questions"
+        android:textSize="16sp" />
 
     <ProgressBar
         android:id="@+id/circle_training"
@@ -50,12 +50,13 @@
         android:layout_height="30dp"
         android:layout_below="@+id/circle_training"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_marginTop="100dp"
-        android:clickable="true"
+        android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
-        app:cardElevation="0dp"
-        android:foreground="?android:attr/selectableItemBackground">
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardElevation="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -66,18 +67,18 @@
             <TextView
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:gravity="left"
                 android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
                 android:fontFamily="@font/font1"
-                android:text="Не знаю" />
+                android:gravity="left"
+                android:text="@string/not_know" />
 
             <TextView
                 android:id="@+id/count_not_know"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
                 android:layout_gravity="center"
+                android:layout_marginRight="10dp"
                 android:fontFamily="@font/font"
                 android:gravity="right" />
         </LinearLayout>
@@ -85,9 +86,9 @@
 
     <View
         android:id="@+id/view_training"
-        android:layout_below="@+id/not_know_card"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_below="@+id/not_know_card"
         android:background="@color/colorSettings" />
 
     <androidx.cardview.widget.CardView
@@ -96,11 +97,12 @@
         android:layout_height="30dp"
         android:layout_below="@+id/view_training"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
         android:clickable="true"
-        app:cardElevation="0dp"
-        android:foreground="?android:attr/selectableItemBackground">
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardElevation="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -111,18 +113,18 @@
             <TextView
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
                 android:fontFamily="@font/font1"
-                android:layout_gravity="center"
                 android:gravity="left|center"
-                android:text="Знаю" />
+                android:text="@string/know" />
 
             <TextView
                 android:id="@+id/count_know"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
                 android:layout_gravity="center"
+                android:layout_marginRight="10dp"
                 android:fontFamily="@font/font"
                 android:gravity="right|center" />
         </LinearLayout>
@@ -134,11 +136,12 @@
         android:layout_height="30dp"
         android:layout_below="@+id/know_card"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
         android:clickable="true"
-        app:cardElevation="0dp"
-        android:foreground="?android:attr/selectableItemBackground">
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardElevation="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -149,11 +152,11 @@
             <TextView
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_gravity="center"
-                android:gravity="left|center"
+                android:layout_marginLeft="10dp"
                 android:fontFamily="@font/font1"
-                android:text="Знаю хорошо" />
+                android:gravity="left|center"
+                android:text="@string/know_good" />
 
             <TextView
                 android:id="@+id/count_know_good"
@@ -172,11 +175,12 @@
         android:layout_height="30dp"
         android:layout_below="@+id/know_good_card"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_marginTop="5dp"
-        app:cardElevation="0dp"
+        android:layout_marginRight="10dp"
         android:clickable="true"
-        android:foreground="?android:attr/selectableItemBackground">
+        android:focusable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardElevation="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -187,18 +191,18 @@
             <TextView
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:gravity="left|center"
                 android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
                 android:fontFamily="@font/font1"
-                android:text="Знаю отлично" />
+                android:gravity="left|center"
+                android:text="@string/know_awesome" />
 
             <TextView
                 android:id="@+id/count_know_awesome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
                 android:layout_gravity="center"
+                android:layout_marginRight="10dp"
                 android:fontFamily="@font/font"
                 android:gravity="right|center" />
         </LinearLayout>
@@ -210,8 +214,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/know_awesome_card"
         android:layout_margin="20dp"
-        android:text="Начать тренировку"
-        android:textColor="@color/white"
+        android:background="@drawable/btn_exam"
+        android:text="@string/begin_training"
         android:textAllCaps="false"
-        android:background="@drawable/btn_exam"/>
+        android:textColor="@color/white" />
 </RelativeLayout>

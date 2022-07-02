@@ -15,10 +15,6 @@ public class HorizontalButtonAdapter extends RecyclerView.Adapter<HorizontalButt
     public HorizontalButtonClickListener mhorizontalButtonClickListener;
     static boolean isCorrect;
 
-    public static void setIsCorrect(boolean isCorrect) {
-        HorizontalButtonAdapter.isCorrect = isCorrect;
-    }
-
     public HorizontalButtonAdapter(String[] numbers, HorizontalButtonClickListener mhorizontalButtonClickListener) {
         this.numbers = numbers;
         this.mhorizontalButtonClickListener = mhorizontalButtonClickListener;
@@ -34,17 +30,7 @@ public class HorizontalButtonAdapter extends RecyclerView.Adapter<HorizontalButt
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.btnhorizontal.setText(numbers[position]);
-        if (isCorrect) {
-            //holder.btnhorizontal.
-        } else {
-           //holder.btnhorizontal.findViewById(position).setBackgroundColor(Color.RED);
-        }
-        holder.btnhorizontal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                holder.horizontalButtonClickListener.onHorizontalButtonClick(holder.getAdapterPosition());
-            }
-        });
+        holder.btnhorizontal.setOnClickListener(view -> holder.horizontalButtonClickListener.onHorizontalButtonClick(holder.getAdapterPosition()));
     }
 
     @Override

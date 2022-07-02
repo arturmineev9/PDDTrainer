@@ -1,5 +1,6 @@
 package com.example.autoschool11.db.db_classes;
 
+// класс для создания графика интенсивности
 public class IntensityClass {
     String date;
     int result;

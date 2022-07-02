@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.autoschool11.R;
 
 public class ButtonAdapter extends RecyclerView.Adapter<ButtonAdapter.ViewHolder> {
+
     String[] rules;
     public  ButtonClickListener mbuttonClickListener;
 

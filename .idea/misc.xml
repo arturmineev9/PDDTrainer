@@ -31,9 +31,12 @@
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/dbbutton_row.xml" value="0.3625" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_exam.xml" value="0.3625" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_exam_end.xml" value="0.26856884057971014" />
+        <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_exam_info.xml" value="0.34479166666666666" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_exam_info1.xml" value="0.3625" />
+        <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_exam_info_pdf.xml" value="0.34479166666666666" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_exam_rules.xml" value="0.1" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_favourites.xml" value="0.28442028985507245" />
+        <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_fines.xml" value="0.34479166666666666" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_fines_test.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_hard_question.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_home.xml" value="0.3" />
@@ -41,7 +44,9 @@
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_marathon.xml" value="0.340625" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_medicine.xml" value="0.1" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_medicine1.xml" value="0.1" />
+        <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_medicine_pdf.xml" value="0.34479166666666666" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_mistakes.xml" value="0.3625" />
+        <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_region_codes.xml" value="0.34479166666666666" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_rules1.xml" value="0.18072916666666666" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_rules_bottom.xml" value="0.25" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_rules_p_d_d.xml" value="0.16770833333333332" />
@@ -50,11 +55,12 @@
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_signs.xml" value="0.67" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_signs_horizontal.xml" value="0.2726449275362319" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_signs_information.xml" value="0.2726449275362319" />
+        <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_signs_pdf.xml" value="0.34479166666666666" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_signs_test.xml" value="0.3307291666666667" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_signs_types_test.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_signs_vertical.xml" value="0.2726449275362319" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_stat.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_statistics.xml" value="0.5" />
+        <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_statistics.xml" value="0.3534577387486279" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_talking.xml" value="0.10733695652173914" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_talking1.xml" value="0.1" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_talking9.xml" value="0.1" />
@@ -73,9 +79,9 @@
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/horizontalbutton_row.xml" value="0.1" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/signs_row.xml" value="0.1" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/single_row.xml" value="0.22" />
-        <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/theme_tickets_row.xml" value="0.3625" />
+        <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/theme_tickets_row.xml" value="0.13823529411764707" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/ticket40_row.xml" value="0.1762917933130699" />
-        <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/ticket_modes_row.xml" value="0.3625" />
+        <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/ticket_modes_row.xml" value="0.3395061728395062" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/menu/settings_menu.xml" value="0.3625" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/menu/timer_menu.xml" value="0.34479166666666666" />

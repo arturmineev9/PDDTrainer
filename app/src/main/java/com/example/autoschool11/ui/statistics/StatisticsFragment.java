@@ -1,6 +1,7 @@
 package com.example.autoschool11.ui.statistics;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,23 +9,21 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.example.autoschool11.MainActivity;
 import com.example.autoschool11.animation.ProgressBarAnimation;
-import com.example.autoschool11.R;
-import com.example.autoschool11.db.DayStatisticsDataBaseHelper;
+import com.example.autoschool11.databinding.FragmentStatisticsBinding;
+import com.example.autoschool11.db.DataBaseHelper;
 import com.example.autoschool11.db.db_classes.IntensityClass;
-import com.example.autoschool11.db.StatisticsDataBaseHelper;
-import com.example.autoschool11.db.TrainingDataBaseHelper;
-import com.example.autoschool11.theme_changer.Constant;
-import com.github.mikephil.charting.charts.BarChart;
+import com.example.autoschool11.theme_changer.ThemeColor;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 
@@ -36,41 +35,38 @@ public class StatisticsFragment extends Fragment {
     ArrayList<BarEntry> barEntryArrayList;
     ArrayList<String> dates;
     ArrayList<IntensityClass> intensityClassArrayList;
-    TextView stat_available;
+    ArrayList<PieEntry> pieEntryArrayList;
+    protected FragmentStatisticsBinding binding;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_statistics, container, false);
-        ProgressBar progressBar = view.findViewById(R.id.progressbarstat);
-        ProgressBar ticketsprogBar = view.findViewById(R.id.progressbarstickets);
-        ProgressBar progressBarthemes = view.findViewById(R.id.progressbarsthemes);
-        TextView full_themes_count = view.findViewById(R.id.full_themes);
-        TextView anscount = view.findViewById(R.id.anscount);
-        TextView ticket20count = view.findViewById(R.id.tickets20count);
-        BarChart barChart = view.findViewById(R.id.barChart);
-        stat_available = view.findViewById(R.id.stat_available);
-        ProgressBar circle_pb = view.findViewById(R.id.circle_pg);
-        TextView percentage = view.findViewById(R.id.percent_prepare);
-        DayStatisticsDataBaseHelper dayStatisticsDataBaseHelper = new DayStatisticsDataBaseHelper(getContext());
-        intensityClassArrayList = dayStatisticsDataBaseHelper.getStatisticsData();
+        binding = FragmentStatisticsBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+        DataBaseHelper databaseHelper = new DataBaseHelper(getContext());
+        intensityClassArrayList = databaseHelper.getStatisticsData();
         barEntryArrayList = new ArrayList<>();
         dates = new ArrayList<>();
+
+
+        // график интенсивности barChart
+
         for (int i = 0; i < intensityClassArrayList.size(); i++) {
             String date = intensityClassArrayList.get(i).getDate();
             int result = intensityClassArrayList.get(i).getResult();
             barEntryArrayList.add(new BarEntry(i, result));
             dates.add(date);
         }
-        barChart.setVisibility(View.INVISIBLE);
-        if (dates.size() != 0){
-            stat_available.setVisibility(View.INVISIBLE);
-            barChart.setVisibility(View.VISIBLE);
+        binding.barChart.setVisibility(View.INVISIBLE);
+        if (dates.size() != 0) {
+            binding.statAvailable.setVisibility(View.INVISIBLE);
+            binding.barChart.setVisibility(View.VISIBLE);
         }
 
-        StatisticsDataBaseHelper dataBaseHelper = new StatisticsDataBaseHelper(getContext());
+        DataBaseHelper dataBaseHelper = new DataBaseHelper(getContext());
 
         BarDataSet barDataSet = new BarDataSet(barEntryArrayList, "Ответы");
-        if (String.valueOf(Constant.color).equals("0")) {
+        if (String.valueOf(ThemeColor.color).equals("0")) {
             barDataSet.setColors(0xffF44336);
         } else {
             barDataSet.setColors(MainActivity.getThemeColor());
@@ -86,61 +82,93 @@ public class StatisticsFragment extends Fragment {
             }
         };
         barData.setValueFormatter(formatter);
-        barChart.setFitBars(true);
-        barChart.setData(barData);
-        barChart.getDescription().setText("");
-        barChart.animateY(1000);
+        binding.barChart.setFitBars(true);
+        Typeface font = Typeface.createFromAsset(getContext().getAssets(), "font.ttf");
+        barData.setValueTypeface(font);
+        binding.barChart.setData(barData);
+        binding.barChart.getDescription().setText("");
+        binding.barChart.animateY(1000);
 
-        XAxis xAxis = barChart.getXAxis();
+        XAxis xAxis = binding.barChart.getXAxis();
         xAxis.setValueFormatter(new IndexAxisValueFormatter(dates));
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setDrawAxisLine(false);
         xAxis.setDrawGridLines(false);
         xAxis.setGranularity(1f);
         xAxis.setLabelRotationAngle(300);
-        barChart.getAxisRight().setEnabled(false);
+        binding.barChart.getAxisRight().setEnabled(false);
 
 
-        YAxis left = barChart.getAxisLeft();
+        YAxis left = binding.barChart.getAxisLeft();
         left.setGranularity(1);
 
-        TrainingDataBaseHelper trainingDataBaseHelper = new TrainingDataBaseHelper(getContext());
+        //  график успеваемости pieChart
 
-        progressBarthemes.setMax(28);
-        progressBarthemes.setProgress(dataBaseHelper.getFullThemesCount());
-        ProgressBarAnimation anim = new ProgressBarAnimation(progressBarthemes, 0, dataBaseHelper.getFullThemesCount());
+        binding.pieChart.setVisibility(View.VISIBLE);
+        binding.statAvailable1.setVisibility(View.INVISIBLE);
+        if (dataBaseHelper.isTableEmpty()){
+            binding.statAvailable1.setVisibility(View.VISIBLE);
+            binding.pieChart.setVisibility(View.INVISIBLE);
+        }
+        pieEntryArrayList = dataBaseHelper.getPieChartStatistics();
+        PieDataSet pieDataSet = new PieDataSet(pieEntryArrayList, null);
+        pieDataSet.setColors(Color.GREEN, Color.RED);
+
+        PieData pieData = new PieData(pieDataSet);
+        pieData.setValueTypeface(font);
+        pieData.setValueFormatter(formatter);
+        pieData.setValueTextSize(20f);
+        pieData.setValueTextColor(Color.BLACK);
+
+        binding.pieChart.setHoleRadius(0);
+        binding.pieChart.setEntryLabelTypeface(font);
+        binding.pieChart.getDescription().setText("");
+        binding.pieChart.setRotationEnabled(false);
+        binding.pieChart.setTransparentCircleAlpha(0);
+        binding.pieChart.setDrawEntryLabels(false);
+        binding.pieChart.setData(pieData);
+        binding.pieChart.invalidate();
+
+        // ProgressBar по темам
+        binding.progressbarsthemes.setMax(28);
+        binding.progressbarsthemes.setProgress(dataBaseHelper.getFullThemesCount());
+        ProgressBarAnimation anim = new ProgressBarAnimation(binding.progressbarsthemes, 0, dataBaseHelper.getFullThemesCount());
         anim.setDuration(1000);
-        progressBarthemes.startAnimation(anim);
-        full_themes_count.setText(Integer.toString(dataBaseHelper.getFullThemesCount()) + "/28");
+        binding.progressbarsthemes.startAnimation(anim);
+        binding.fullThemes.setText(dataBaseHelper.getFullThemesCount() + "/28");
 
-
-        progressBar.setMax(800);
-        progressBar.setProgress(trainingDataBaseHelper.getKnowingCount());
-        anim = new ProgressBarAnimation(progressBar, 0, trainingDataBaseHelper.getKnowingCount());
+        // ProgressBar по вопросам
+        binding.progressbarstat.setMax(800);
+        binding.progressbarstat.setProgress(dataBaseHelper.getKnowingCount());
+        anim = new ProgressBarAnimation(binding.progressbarstat, 0, dataBaseHelper.getKnowingCount());
         anim.setDuration(1000);
-        progressBar.startAnimation(anim);
-        anscount.setText(trainingDataBaseHelper.getKnowingCount() + "/800");
+        binding.progressbarstat.startAnimation(anim);
+        binding.anscount.setText(dataBaseHelper.getKnowingCount() + "/800");
 
-
-        ticketsprogBar.setMax(40);
-        ticketsprogBar.setProgress(dataBaseHelper.get20Tickets());
-        anim = new ProgressBarAnimation(ticketsprogBar, 0, dataBaseHelper.get20Tickets());
+        // ProgressBar по билетам
+        binding.progressbarstickets.setMax(40);
+        binding.progressbarstickets.setProgress(dataBaseHelper.get20Tickets());
+        anim = new ProgressBarAnimation(binding.progressbarstickets, 0, dataBaseHelper.get20Tickets());
         anim.setDuration(1000);
-        ticketsprogBar.startAnimation(anim);
-        ticket20count.setText(dataBaseHelper.get20Tickets() + "/40");
+        binding.progressbarstickets.startAnimation(anim);
+        binding.tickets20count.setText(dataBaseHelper.get20Tickets() + "/40");
 
-
-
-
-        Double d = trainingDataBaseHelper.getKnowingCount() / 800.0 * 100;
+        // ProgressBar прогресса
+        Double d = dataBaseHelper.getKnowingCount() / 800.0 * 100;
         Integer i = d.intValue();
-        percentage.setText(i + "%");
+        binding.percentPrepare.setText(i + "%");
 
-        circle_pb.setProgress(i);
-        circle_pb.setMax(100);
-        anim = new ProgressBarAnimation(circle_pb, 0, i);
+        binding.circlePg.setProgress(i);
+        binding.circlePg.setMax(100);
+        anim = new ProgressBarAnimation(binding.circlePg, 0, i);
         anim.setDuration(1000);
-        circle_pb.startAnimation(anim);
+        binding.circlePg.startAnimation(anim);
         return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

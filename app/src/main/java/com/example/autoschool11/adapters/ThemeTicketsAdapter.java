@@ -35,7 +35,7 @@ public class ThemeTicketsAdapter extends RecyclerView.Adapter<ThemeTicketsAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.btnticket.setText(tickets[position]);
-        holder.res.setText(results[position] + "/" + Integer.toString(amount_of_questions[position]));
+        holder.res.setText(results[position] + "/" + amount_of_questions[position]);
         holder.progressBartheme.setMax(amount_of_questions[position]);
         holder.progressBartheme.setProgress(Integer.parseInt(results[position]));
     }

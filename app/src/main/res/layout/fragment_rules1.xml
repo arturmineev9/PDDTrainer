@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.rules.pdd.RulesFragmentPDF">
+    tools:context=".ui.theory.pdd.RulesFragmentPDF">
 
     <com.github.barteksc.pdfviewer.PDFView
         android:id="@+id/pdfview1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 </FrameLayout>

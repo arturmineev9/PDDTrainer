@@ -18,11 +18,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 
-import com.example.autoschool11.db.DayStatisticsDataBaseHelper;
-import com.example.autoschool11.db.MistakesDataBaseHelper;
-import com.example.autoschool11.db.StatisticsDataBaseHelper;
-import com.example.autoschool11.db.TrainingDataBaseHelper;
-import com.example.autoschool11.theme_changer.Constant;
+import com.example.autoschool11.db.DataBaseHelper;
+import com.example.autoschool11.theme_changer.ThemeColor;
 import com.example.autoschool11.theme_changer.Methods;
 import com.turkialkhateeb.materialcolorpicker.ColorChooserDialog;
 import com.turkialkhateeb.materialcolorpicker.ColorListener;
@@ -35,7 +32,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     int appTheme;
     int themeColor;
     int appColor;
-    Constant constant;
+    ThemeColor constant;
     Context context;
 
     @Override
@@ -45,12 +42,12 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         appColor = app_preferences.getInt("color", 0);
         appTheme = app_preferences.getInt("theme", 0);
         themeColor = appColor;
-        Constant.color = appColor;
+        ThemeColor.color = appColor;
 
         if (themeColor == 0) {
-            setTheme(Constant.theme);
+            setTheme(ThemeColor.theme);
         } else if (appTheme == 0) {
-            setTheme(Constant.theme);
+            setTheme(ThemeColor.theme);
         } else {
             setTheme(appTheme);
         }
@@ -58,7 +55,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
 
         methods = new Methods();
-        button = (Button) findViewById(R.id.button_color);
+        button = findViewById(R.id.button_color);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         editor = sharedPreferences.edit();
 
@@ -76,10 +73,10 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                             Toast.makeText(getBaseContext(), "Тема белого цвета на данный момент недоступна", Toast.LENGTH_SHORT).show();
                         } else {
                             colorize();
-                            Constant.color = color;
+                            ThemeColor.color = color;
                             methods.setColorTheme();
                             editor.putInt("color", color);
-                            editor.putInt("theme", Constant.theme);
+                            editor.putInt("theme", ThemeColor.theme);
                             editor.commit();
                             Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -103,10 +100,10 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         d.setBounds(58, 58, 58, 58);
 
         d.getPaint().setStyle(Paint.Style.FILL);
-        if (String.valueOf(Constant.color).equals("0")) {
+        if (String.valueOf(ThemeColor.color).equals("0")) {
             d.getPaint().setColor(0xffF44336);
         } else {
-            d.getPaint().setColor(Constant.color);
+            d.getPaint().setColor(ThemeColor.color);
         }
         button.setBackground(d);
     }
@@ -119,14 +116,13 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View view) {
-        StatisticsDataBaseHelper dataBaseHelper = new StatisticsDataBaseHelper(getBaseContext());
-        DayStatisticsDataBaseHelper statisticsDataBaseHelper = new DayStatisticsDataBaseHelper(getBaseContext());
-        MistakesDataBaseHelper mistakesDataBaseHelper = new MistakesDataBaseHelper(getBaseContext());
-        TrainingDataBaseHelper trainingDataBaseHelper = new TrainingDataBaseHelper(getBaseContext());
-        trainingDataBaseHelper.restartTrainingData();
-        dataBaseHelper.restartStatisticsDB();
-        mistakesDataBaseHelper.restartMistakes();
-        statisticsDataBaseHelper.restartDayStatisticsDB();
+        DataBaseHelper databaseHelper = new DataBaseHelper(getBaseContext());
+        databaseHelper.restartTrainingData();
+        databaseHelper.restartStatisticsDB();
+        databaseHelper.restartMistakes();
+        databaseHelper.restartDayStatisticsDB();
+        databaseHelper.restartSuccessTable();
+
         Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);

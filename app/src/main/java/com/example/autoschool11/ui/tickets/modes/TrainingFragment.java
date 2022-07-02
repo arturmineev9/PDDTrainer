@@ -17,86 +17,78 @@ import android.widget.Toast;
 
 import com.example.autoschool11.animation.ProgressBarAnimation;
 import com.example.autoschool11.R;
-import com.example.autoschool11.db.TrainingDataBaseHelper;
+import com.example.autoschool11.databinding.FragmentTrainingBinding;
+import com.example.autoschool11.db.DataBaseHelper;
 
-
+// Умная тренировка
 public class TrainingFragment extends Fragment implements View.OnClickListener {
-    Button training_btn;
+
+    protected FragmentTrainingBinding binding;
+    String knowing = "knowing";
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_training, container, false);
-        TrainingDataBaseHelper dataBaseHelper = new TrainingDataBaseHelper(getContext());
-        ProgressBar circle_training = view.findViewById(R.id.circle_training);
-        CardView not_know_card = view.findViewById(R.id.not_know_card);
-        CardView know_card = view.findViewById(R.id.know_card);
-        CardView know_good_card = view.findViewById(R.id.know_good_card);
-        CardView know_awesome_card = view.findViewById(R.id.know_awesome_card);
-        TextView not_know = view.findViewById(R.id.count_not_know);
-        TextView know = view.findViewById(R.id.count_know);
-        TextView know_good = view.findViewById(R.id.count_know_good);
-        TextView know_awesome = view.findViewById(R.id.count_know_awesome);
-        TextView awesome_count = view.findViewById(R.id.otlichno_count);
-        training_btn = view.findViewById(R.id.training_btn);
-        not_know_card.setOnClickListener(this);
-        know_card.setOnClickListener(this);
-        know_good_card.setOnClickListener(this);
-        know_awesome_card.setOnClickListener(this);
-        not_know.setText(dataBaseHelper.getCountQuestions(1));
-        know.setText(dataBaseHelper.getCountQuestions(2));
-        know_good.setText(dataBaseHelper.getCountQuestions(3));
-        know_awesome.setText(dataBaseHelper.getCountQuestions(4));
+        binding = FragmentTrainingBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
 
-        circle_training.setMax(800);
-        circle_training.setProgress(Integer.parseInt(dataBaseHelper.getCountQuestions(4)));
-        ProgressBarAnimation anim = new ProgressBarAnimation(circle_training, 0, Integer.parseInt(dataBaseHelper.getCountQuestions(4)));
+        DataBaseHelper dataBaseHelper = new DataBaseHelper(getContext());
+        binding.notKnowCard.setOnClickListener(this);
+        binding.knowCard.setOnClickListener(this);
+        binding.knowGoodCard.setOnClickListener(this);
+        binding.knowAwesomeCard.setOnClickListener(this);
+        binding.countNotKnow.setText(dataBaseHelper.getCountQuestions(1));
+        binding.countKnow.setText(dataBaseHelper.getCountQuestions(2));
+        binding.countKnowGood.setText(dataBaseHelper.getCountQuestions(3));
+        binding.countKnowAwesome.setText(dataBaseHelper.getCountQuestions(4));
+
+        // ProgressBar
+        binding.circleTraining.setMax(800);
+        binding.circleTraining.setProgress(Integer.parseInt(dataBaseHelper.getCountQuestions(4)));
+        ProgressBarAnimation anim = new ProgressBarAnimation(binding.circleTraining, 0, Integer.parseInt(dataBaseHelper.getCountQuestions(4)));
         anim.setDuration(1000);
-        circle_training.startAnimation(anim);
-        awesome_count.setText(dataBaseHelper.getCountQuestions(4));
+        binding.circleTraining.startAnimation(anim);
+        binding.otlichnoCount.setText(dataBaseHelper.getCountQuestions(4));
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
 
-        training_btn.setOnClickListener(new View.OnClickListener() {
+        binding.trainingBtn.setOnClickListener(view1 -> { // обработка нажатия кнопки "Начать тренировку"
+            Bundle bundle = new Bundle();
 
-            @Override
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-
-                if (dataBaseHelper.getTrainingTableLength(1) != 0)
-                    bundle.putInt("knowing", 1);
-                else if (dataBaseHelper.getTrainingTableLength(2) != 0)
-                    bundle.putInt("knowing", 2);
-                else if (dataBaseHelper.getTrainingTableLength(3) != 0)
-                    bundle.putInt("knowing", 3);
-                else bundle.putInt("knowing", 4);
-                TrainingFragmentSolution.setQuestion_number(1);
-                navController.navigate(R.id.trainingFragmentSolution, bundle);
-        }
-    });
+            if (dataBaseHelper.getTrainingTableLength(1) != 0)
+                bundle.putInt(knowing, 1);
+            else if (dataBaseHelper.getTrainingTableLength(2) != 0)
+                bundle.putInt(knowing, 2);
+            else if (dataBaseHelper.getTrainingTableLength(3) != 0)
+                bundle.putInt(knowing, 3);
+            else bundle.putInt(knowing, 4);
+            TrainingFragmentSolution.setQuestion_number(1);
+            navController.navigate(R.id.trainingFragmentSolution, bundle);
+        });
         return view;
-}
+    }
 
     @Override
-    public void onClick(View view) {
-        TrainingDataBaseHelper trainingDataBaseHelper = new TrainingDataBaseHelper(getContext());
+    public void onClick(View view) { // обработка нажатия на категории знаний
+        DataBaseHelper trainingDataBaseHelper = new DataBaseHelper(getContext());
         Bundle bundle = new Bundle();
         int knowing_id = 0;
         NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
         switch (view.getId()) {
             case R.id.not_know_card:
-                bundle.putInt("knowing", 1);
+                bundle.putInt(knowing, 1);
                 knowing_id = 1;
                 break;
             case R.id.know_card:
-                bundle.putInt("knowing", 2);
+                bundle.putInt(knowing, 2);
                 knowing_id = 2;
                 break;
             case R.id.know_good_card:
-                bundle.putInt("knowing", 3);
+                bundle.putInt(knowing, 3);
                 knowing_id = 3;
                 break;
             case R.id.know_awesome_card:
-                bundle.putInt("knowing", 4);
+                bundle.putInt(knowing, 4);
                 knowing_id = 4;
                 break;
         }
@@ -107,5 +99,9 @@ public class TrainingFragment extends Fragment implements View.OnClickListener {
             Toast.makeText(getContext(), "В этой категории нет вопросов.", Toast.LENGTH_SHORT).show();
     }
 
-
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
 }

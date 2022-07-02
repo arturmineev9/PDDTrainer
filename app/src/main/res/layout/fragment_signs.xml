@@ -5,12 +5,12 @@
     android:layout_height="wrap_content"
     android:background="?attr/background_color"
     android:orientation="vertical"
-    tools:context=".ui.rules.signs.SignsFragment">
+    tools:context=".ui.theory.signs.SignsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/signsRV"
-        android:layout_marginLeft="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp" />
 
 </RelativeLayout>

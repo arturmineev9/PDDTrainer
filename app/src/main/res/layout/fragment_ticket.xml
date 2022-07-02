@@ -38,16 +38,17 @@
                     android:layout_margin="10dp"
                     android:fontFamily="@font/font"
                     android:gravity="left"
-                    android:textSize="18dp" />
+                    android:textSize="18sp" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/favourites_card"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginRight="20dp"
                     android:layout_marginTop="8dp"
+                    android:layout_marginRight="20dp"
                     android:clickable="true"
+                    android:focusable="true"
                     android:foreground="?android:attr/selectableItemBackground"
                     app:cardElevation="0dp">
 
@@ -69,7 +70,7 @@
                             android:layout_marginTop="5dp"
                             android:fontFamily="@font/font"
                             android:gravity="center"
-                            android:text="Удалить из избранного"
+                            android:text="@string/delete_from_favourite"
                             android:textColor="@color/blue_colorPrimaryDark" />
                     </LinearLayout>
 
@@ -91,7 +92,8 @@
                     android:layout_marginBottom="20dp"
                     android:fontFamily="@font/font"
                     android:gravity="center"
-                    android:text="Вопрос" />
+                    android:text="@string/question" />
+
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
@@ -108,14 +110,14 @@
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ansRV"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/btn_exam"
             android:layout_alignParentEnd="true"
-            android:fontFamily="@font/font"
-            android:text="Далее"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/btn_exam"
             android:drawableRight="@drawable/ic_baseline_arrow_forward_24"
+            android:fontFamily="@font/font"
             android:paddingRight="10dp"
+            android:text="@string/next"
             android:textColor="@color/white" />
 
         <androidx.cardview.widget.CardView
@@ -123,23 +125,21 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/btnnext"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
             android:layout_marginTop="20dp"
-
+            android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
             app:cardCornerRadius="20dp"
-
             app:cardElevation="2dp"
             app:cardPreventCornerOverlap="false"
             app:contentPadding="0dp"
             app:contentPaddingLeft="5dp">
 
-                <TextView
-                    android:id="@+id/explanation"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/font"
-                    android:textSize="16dp" />
+            <TextView
+                android:id="@+id/explanation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font"
+                android:textSize="16sp" />
 
         </androidx.cardview.widget.CardView>
 

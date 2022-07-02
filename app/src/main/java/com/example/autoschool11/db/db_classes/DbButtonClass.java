@@ -1,6 +1,6 @@
 package com.example.autoschool11.db.db_classes;
 
-import android.widget.TextView;
+// класс для вариантов ответов
 
 public class DbButtonClass {
     String btn;

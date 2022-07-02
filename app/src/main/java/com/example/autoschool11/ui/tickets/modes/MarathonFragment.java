@@ -22,65 +22,45 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.autoschool11.R;
-import com.example.autoschool11.adapters.DbButtonAdapter;
+import com.example.autoschool11.adapters.AnswersAdapter;
+import com.example.autoschool11.databinding.FragmentTicketBinding;
+import com.example.autoschool11.db.PDD_DataBaseHelper;
 import com.example.autoschool11.db.DataBaseHelper;
 import com.example.autoschool11.db.db_classes.DbButtonClass;
-import com.example.autoschool11.db.FavouritesDataBaseHelper;
-import com.example.autoschool11.db.MistakesDataBaseHelper;
-import com.example.autoschool11.db.TrainingDataBaseHelper;
 import com.example.autoschool11.ui.tickets.Ticket;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class MarathonFragment extends Fragment implements DbButtonAdapter.DbButtonClickListener, View.OnClickListener {
+// марафон
+public class MarathonFragment extends Fragment implements AnswersAdapter.DbButtonClickListener, View.OnClickListener {
     ArrayList<DbButtonClass> dbButtonClassArrayList;
-    RecyclerView recyclerViewans;
-    RecyclerView recyclerViewhorizontal;
     static int i = 1;
     String img;
-    public DataBaseHelper mDBHelper;
+    public PDD_DataBaseHelper mDBHelper;
     public SQLiteDatabase mDb;
     Context context;
     static int count;
-    TextView question;
-    TextView questionnumber;
     int countans;
-    ImageView image_question;
-    ImageView favourite_img;
-    TextView favourite_txt;
     int question_number = 1;
-    int ticketa;
-    TextView explanation;
-    Button btnnext;
+    protected FragmentTicketBinding binding;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setHasOptionsMenu(true);
-        View view = inflater.inflate(R.layout.fragment_ticket, container, false);
+        binding = FragmentTicketBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+
         BottomNavigationView navBar = getActivity().findViewById(R.id.nav_view);
         navBar.setVisibility(View.GONE);
-        question = view.findViewById(R.id.db_question);
-        explanation = view.findViewById(R.id.explanation);
-        image_question = view.findViewById(R.id.db_image);
-        mDBHelper = new DataBaseHelper(getContext());
-        recyclerViewans = view.findViewById(R.id.ansRV);
-        recyclerViewhorizontal = view.findViewById(R.id.horizontalRV);
-        favourite_img = view.findViewById(R.id.favourites_image);
-        favourite_txt = view.findViewById(R.id.favourites_txt);
-        questionnumber = view.findViewById(R.id.questionnumbertxt);
-        CardView favourites = view.findViewById(R.id.favourites_card);
-        favourites.setOnClickListener(this);
-        btnnext = view.findViewById(R.id.btnnext);
+        mDBHelper = new PDD_DataBaseHelper(getContext());
+        binding.favouritesCard.setOnClickListener(this);
 
         try {
             mDBHelper.updateDataBase();
@@ -94,153 +74,128 @@ public class MarathonFragment extends Fragment implements DbButtonAdapter.DbButt
             throw mSQLException;
         }
 
-
-        /*String[] numbers = new String[800];
-        for (int j = 0; j < 800; j++) {
-            numbers[j] = Integer.toString(j + 1);
-        }
-        HorizontalButtonAdapter horizontalButtonAdapter = new HorizontalButtonAdapter(numbers, this);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
-        recyclerViewhorizontal.setLayoutManager(layoutManager);
-        recyclerViewhorizontal.setItemViewCacheSize(800);
-        recyclerViewhorizontal.setAdapter(horizontalButtonAdapter);*/
-        TrainingDataBaseHelper trainingDataBaseHelper = new TrainingDataBaseHelper(getContext());
+        DataBaseHelper databaseHelper = new DataBaseHelper(getContext());
         for (int j = 1; j < 801; j++) {
-            int progress = trainingDataBaseHelper.getMarathonId(j);
+            int progress = databaseHelper.getMarathonId(j); // проверка прогресса и перемещение на место остановки
             if (progress == 0) {
                 i = j;
                 question_number = j;
                 break;
             }
         }
-        ShowData(i);
+        ShowMarathonQuestion(i);
 
 
-        btnnext.setOnClickListener(new View.OnClickListener() {
+        binding.btnnext.setOnClickListener(view1 -> { // обработка нажатия "Далее"
 
-            @Override
-            public void onClick(View view) {
-
-                if (i == 801) {
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("countans", countans);
-                    bundle.putInt("countquestions", 800);
-                    NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
-                    navController.navigate(R.id.ticketEndFragment, bundle);
-                    DbButtonAdapter.setCountans(0);
-                } else {
-                    ShowData(i);
-                }
+            if (i == 801) {
+                Bundle bundle = new Bundle();
+                bundle.putInt("countans", countans);
+                bundle.putInt("countquestions", 800);
+                NavController navController = Navigation.findNavController(getActivity(), R.id.nav_host_fragment_activity_main);
+                navController.navigate(R.id.ticketEndFragment, bundle);
+                AnswersAdapter.setCountans(0);
+            } else {
+                ShowMarathonQuestion(i);
             }
         });
         return view;
     }
 
-    int[] chooseans = new int[800];
-
 
     @Override
-    public void onButtonClick(int position) {
-        recyclerViewhorizontal.scrollToPosition(question_number - 1);
+    public void onButtonClick(int position) { // обработка нажатия на вариант ответа
         if (count < 1) {
-            postAndNotifyHorizontalAdapter(new Handler(), i, question_number, position);
+            onAnswerClick(new Handler(), i, question_number, position);
         }
         count++;
     }
 
 
-
-
-    public void postAndNotifyHorizontalAdapter(final Handler handler, int id, int question_number, int position) {
-        TrainingDataBaseHelper trainingDataBaseHelper = new TrainingDataBaseHelper(getContext());
-        handler.post(new Runnable() {
-            @Override
-            public void run() {
-                MistakesDataBaseHelper dataBaseHelper = new MistakesDataBaseHelper(getContext());
-                recyclerViewhorizontal.scrollToPosition(question_number - 1);
-                RecyclerView.ViewHolder ans_view = recyclerViewans.findViewHolderForAdapterPosition(position);
-                RecyclerView.ViewHolder right_ans = recyclerViewans.findViewHolderForAdapterPosition(DataBaseHelper.getCorrectans());
-                CardView right_button = right_ans.itemView.findViewById(R.id.ans_card);
-                CardView ansbutton = ans_view.itemView.findViewById(R.id.ans_card);
-                if (Ticket.getCount() > 1) {
-                    ansbutton.setClickable(false);
+    public void onAnswerClick(Handler handler, int id, int question_number, int position) {
+        handler.post(() -> {
+            DataBaseHelper databaseHelper = new DataBaseHelper(getContext());
+            binding.horizontalRV.scrollToPosition(question_number - 1);
+            RecyclerView.ViewHolder ans_view = binding.ansRV.findViewHolderForAdapterPosition(position);
+            RecyclerView.ViewHolder right_ans = binding.ansRV.findViewHolderForAdapterPosition(PDD_DataBaseHelper.getCorrectans());
+            CardView right_button = right_ans.itemView.findViewById(R.id.ans_card);
+            CardView ansbutton = ans_view.itemView.findViewById(R.id.ans_card);
+            if (Ticket.getCount() > 1) {
+                ansbutton.setClickable(false);
+            } else {
+                if (position == PDD_DataBaseHelper.getCorrectans()) {
+                    ansbutton.setCardBackgroundColor(Color.argb(255, 92, 184, 92));
+                    databaseHelper.setMarathonProgress(id - 1, 1);
+                    countans++;
+                    databaseHelper.increaseCorrectAnswers();
                 } else {
-                    if (position == DataBaseHelper.getCorrectans()) {
-                        ansbutton.setCardBackgroundColor(Color.argb(255, 92, 184, 92));
-                        Log.d("id", String.valueOf(id - 1));
-                        trainingDataBaseHelper.setMarathonProgress(id - 1, 1);
-                        countans++;
-
-
-                    } else {
-                        ansbutton.setCardBackgroundColor(Color.argb(255, 255, 0, 0));
-                        right_button.setCardBackgroundColor(Color.argb(255, 92, 184, 92));
-                        try {
-                            dataBaseHelper.insertMistake(id - 1);
-                        } catch (SQLiteConstraintException e) {
-                            Log.d("Exception", "Этот вопрос уже в бд");
-                        }
-                        Log.d("id", String.valueOf(id - 1));
-                        trainingDataBaseHelper.setMarathonProgress(id - 1, 2);
-                        trainingDataBaseHelper.decreaseKnowingID(id - 1);
+                    ansbutton.setCardBackgroundColor(Color.argb(255, 255, 0, 0));
+                    right_button.setCardBackgroundColor(Color.argb(255, 92, 184, 92));
+                    try {
+                        databaseHelper.insertMistake(id - 1);
+                    } catch (SQLiteConstraintException e) {
+                        Log.d("Exception", "Этот вопрос уже в бд");
                     }
-                    btnnext.setVisibility(View.VISIBLE);
-                    explanation.setVisibility(View.VISIBLE);
-                    trainingDataBaseHelper.increaseKnowingID(id - 1);
+                    databaseHelper.increaseIncorrectAnswers();
+                    databaseHelper.setMarathonProgress(id - 1, 2);
+                    databaseHelper.decreaseKnowingID(id - 1);
                 }
-
+                binding.btnnext.setVisibility(View.VISIBLE);
+                binding.explanation.setVisibility(View.VISIBLE);
+                databaseHelper.increaseKnowingID(id - 1);
             }
+
         });
     }
 
 
-    public void ShowData(int a) {
-        recyclerViewhorizontal.scrollToPosition(question_number - 1);
-        explanation.setVisibility(View.GONE);
-        btnnext.setVisibility(View.GONE);
-        image_question.setVisibility(View.VISIBLE);
-        FavouritesDataBaseHelper dataBaseHelper = new FavouritesDataBaseHelper(getContext());
+    public void ShowMarathonQuestion(int a) { // показ вопроса
+        binding.horizontalRV.scrollToPosition(question_number - 1);
+        binding.explanation.setVisibility(View.GONE);
+        binding.btnnext.setVisibility(View.GONE);
+        binding.dbImage.setVisibility(View.VISIBLE);
+        DataBaseHelper dataBaseHelper = new DataBaseHelper(getContext());
         if (dataBaseHelper.isInFavourites(i)) {
-            favourite_img.setImageResource(R.drawable.star_pressed);
-            favourite_txt.setText("Удалить из избранного");
+            binding.favouritesImage.setImageResource(R.drawable.star_pressed);
+            binding.favouritesTxt.setText("Удалить из избранного");
         } else {
-            favourite_img.setImageResource(R.drawable.star_button);
-            favourite_txt.setText("Добавить в избранное");
+            binding.favouritesImage.setImageResource(R.drawable.star_button);
+            binding.favouritesTxt.setText("Добавить в избранное");
         }
-        questionnumber.setText("Вопрос " + question_number + " / " + 800);
-        mDBHelper.getAllData(a);
-        if (Integer.toString(DataBaseHelper.getBilet() + 1).length() == 1 && Integer.toString(DataBaseHelper.getNumber() + 1).length() == 1) {
-            img = "pdd" + "_0" + Integer.toString(DataBaseHelper.getBilet() + 1) + "_0" + (DataBaseHelper.getNumber() + 1);
-        } else if (Integer.toString(DataBaseHelper.getBilet() + 1).length() != 1 && Integer.toString(DataBaseHelper.getNumber() + 1).length() == 1) {
-            img = "pdd_" + Integer.toString(DataBaseHelper.getBilet() + 1) + "_0" + (DataBaseHelper.getNumber() + 1);
-        } else if (Integer.toString(DataBaseHelper.getBilet() + 1).length() == 1 && Integer.toString(DataBaseHelper.getNumber() + 1).length() != 1) {
-            img = "pdd_0" + Integer.toString(DataBaseHelper.getBilet() + 1) + "_" + (DataBaseHelper.getNumber() + 1);
+        binding.questionnumbertxt.setText("Вопрос " + question_number + " / " + 800);
+        mDBHelper.getQuestion(a);
+        if (Integer.toString(PDD_DataBaseHelper.getBilet() + 1).length() == 1 && Integer.toString(PDD_DataBaseHelper.getNumber() + 1).length() == 1) {
+            img = "pdd" + "_0" + (PDD_DataBaseHelper.getBilet() + 1) + "_0" + (PDD_DataBaseHelper.getNumber() + 1);
+        } else if (Integer.toString(PDD_DataBaseHelper.getBilet() + 1).length() != 1 && Integer.toString(PDD_DataBaseHelper.getNumber() + 1).length() == 1) {
+            img = "pdd_" + (PDD_DataBaseHelper.getBilet() + 1) + "_0" + (PDD_DataBaseHelper.getNumber() + 1);
+        } else if (Integer.toString(PDD_DataBaseHelper.getBilet() + 1).length() == 1 && Integer.toString(PDD_DataBaseHelper.getNumber() + 1).length() != 1) {
+            img = "pdd_0" + (PDD_DataBaseHelper.getBilet() + 1) + "_" + (PDD_DataBaseHelper.getNumber() + 1);
         } else
-            img = "pdd_" + Integer.toString(DataBaseHelper.getBilet() + 1) + "_" + (DataBaseHelper.getNumber() + 1);
+            img = "pdd_" + (PDD_DataBaseHelper.getBilet() + 1) + "_" + (PDD_DataBaseHelper.getNumber() + 1);
         try {
             Log.d("img", img);
             int id = getResources().getIdentifier("com.example.autoschool11:drawable/" + img, null, null);
             Toast toast = Toast.makeText(getContext(), id, Toast.LENGTH_SHORT);
-            image_question.setImageResource(id);
+            binding.dbImage.setImageResource(id);
         } catch (Exception e) {
-            image_question.setVisibility(View.GONE);
+            binding.dbImage.setVisibility(View.GONE);
         }
 
 
         dbButtonClassArrayList = mDBHelper.getAnswers(a);
         count = 0;
 
-        explanation.setText(DataBaseHelper.getExplanation());
-        question.setText(DataBaseHelper.getQuestion());
+        binding.explanation.setText(PDD_DataBaseHelper.getExplanation());
+        binding.dbQuestion.setText(PDD_DataBaseHelper.getQuestion());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context) {
             @Override
             public boolean canScrollVertically() {
                 return false;
             }
         };
-        DbButtonAdapter dbButtonAdapter = new DbButtonAdapter(dbButtonClassArrayList, MarathonFragment.this);
-        recyclerViewans.setLayoutManager(linearLayoutManager);
-        recyclerViewans.setAdapter(dbButtonAdapter);
+        AnswersAdapter answersAdapter = new AnswersAdapter(dbButtonClassArrayList, MarathonFragment.this);
+        binding.ansRV.setLayoutManager(linearLayoutManager);
+        binding.ansRV.setAdapter(answersAdapter);
         question_number++;
         i++;
     }
@@ -249,27 +204,31 @@ public class MarathonFragment extends Fragment implements DbButtonAdapter.DbButt
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.settings_menu, menu);
-        for (int i = 0; i < menu.size(); i++)
-            menu.getItem(i).setVisible(false);
+        for (int j = 0; j < menu.size(); j++)
+            menu.getItem(j).setVisible(false);
     }
 
     @Override
-    public void onClick(View view) {
-        ImageView favourite_img = view.findViewById(R.id.favourites_image);
-        TextView favourite_txt = view.findViewById(R.id.favourites_txt);
-        FavouritesDataBaseHelper favouritesDataBaseHelper = new FavouritesDataBaseHelper(getContext());
-        if (favourite_txt.getText().equals("Добавить в избранное")) {
+    public void onClick(View view) { // избранное
+        DataBaseHelper favouritesDataBaseHelper = new DataBaseHelper(getContext());
+        if (binding.favouritesTxt.getText().equals("Добавить в избранное")) {
             favouritesDataBaseHelper.insertFavourite(i - 1);
-            favourite_img.setImageResource(R.drawable.star_pressed);
-            favourite_txt.setText("Удалить из избранного");
+            binding.favouritesImage.setImageResource(R.drawable.star_pressed);
+            binding.favouritesTxt.setText("Удалить из избранного");
         } else {
             favouritesDataBaseHelper.deleteFavourite(i - 1);
-            favourite_img.setImageResource(R.drawable.star_button);
-            favourite_txt.setText("Добавить в избранное");
+            binding.favouritesImage.setImageResource(R.drawable.star_button);
+            binding.favouritesTxt.setText("Добавить в избранное");
         }
     }
 
     public static void setI(int i) {
         MarathonFragment.i = i;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
     }
 }

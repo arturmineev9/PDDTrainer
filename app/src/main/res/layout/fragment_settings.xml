@@ -28,7 +28,7 @@
                 android:layout_marginLeft="7dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="2dp"
-                android:text="Настройки внешнего вида"
+                android:text="@string/settings"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textStyle="bold" />
 
@@ -50,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="7dp"
                     android:layout_weight="1"
-                    android:text="Тема"
+                    android:text="@string/theme"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <Button
@@ -69,49 +69,38 @@
 
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/stat_restart_card"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:layout_marginTop="10dp"
                 android:clickable="true"
-                app:cardElevation="0dp"
-                android:id="@+id/stat_restart_card"
                 android:foreground="?android:attr/selectableItemBackground"
-                android:layout_marginTop="10dp">
+                app:cardElevation="0dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
                     android:background="?attr/background_color"
+                    android:gravity="center"
                     android:orientation="horizontal">
 
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_gravity="left|center"
-                        android:src="@drawable/trash"/>
+                        android:src="@drawable/trash" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:textColor="@color/red"
-                        android:text="Сбросить статистику"/>
+                        android:text="@string/delete_stat"
+                        android:textColor="@color/red" />
 
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-            <!-- <Button
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                style="@style/Widget.AppCompat.Button.Borderless.Colored"
-                android:layout_marginTop="10dp"
-                android:drawableLeft="@drawable/trash"
-                android:textColor="@color/red"
-                android:textAllCaps="false"
-                android:text="Сбросить статистику"/> -->
-
         </LinearLayout>
-
 
 
     </ScrollView>

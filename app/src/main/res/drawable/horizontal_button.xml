@@ -7,8 +7,12 @@
 
         <shape android:shape="oval">
             <solid android:color="#ffffff" />
-            <stroke android:color="#000000" android:width="0.5dp"/>
-            <size android:width="50dp" android:height="40dp"/>
+            <stroke
+                android:width="0.5dp"
+                android:color="#000000" />
+            <size
+                android:width="50dp"
+                android:height="40dp" />
         </shape>
 
 

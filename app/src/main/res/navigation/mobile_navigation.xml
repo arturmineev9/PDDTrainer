@@ -55,7 +55,7 @@
 
     <fragment
         android:id="@+id/navigation_rules"
-        android:name="com.example.autoschool11.ui.rules.RulesFragment"
+        android:name="com.example.autoschool11.ui.theory.RulesFragment"
         android:label="@string/title_rules"
         tools:layout="@layout/fragment_rules_bottom">
         <action
@@ -86,16 +86,16 @@
     </fragment>
     <fragment
         android:id="@+id/rulesFragment1"
-        android:name="com.example.autoschool11.ui.rules.pdd.RulesFragmentPDF"
+        android:name="com.example.autoschool11.ui.theory.pdd.RulesFragmentPDF"
         tools:layout="@layout/fragment_rules1"/>
     <fragment
         android:id="@+id/finesFragment"
-        android:name="com.example.autoschool11.ui.rules.fines.FinesFragment"
+        android:name="com.example.autoschool11.ui.theory.fines.FinesFragment"
         android:label="Штрафы"
         tools:layout="@layout/fragment_fines" />
     <fragment
         android:id="@+id/signsFragment"
-        android:name="com.example.autoschool11.ui.rules.signs.SignsFragment"
+        android:name="com.example.autoschool11.ui.theory.signs.SignsFragment"
         android:label="Дорожные знаки"
         tools:layout="@layout/fragment_signs">
         <action
@@ -122,7 +122,7 @@
     </fragment>
     <fragment
         android:id="@+id/examRulesFragment"
-        android:name="com.example.autoschool11.ui.rules.examinfo.ExamInfoFragment"
+        android:name="com.example.autoschool11.ui.theory.examinfo.ExamInfoFragment"
         android:label="Особенности экзамена"
         tools:layout="@layout/fragment_exam_info">
         <action
@@ -131,7 +131,7 @@
     </fragment>
     <fragment
         android:id="@+id/medicineFragment"
-        android:name="com.example.autoschool11.ui.rules.medicine.MedicineFragment"
+        android:name="com.example.autoschool11.ui.theory.medicine.MedicineFragment"
         android:label="Медицина"
         tools:layout="@layout/fragment_medicine">
         <action
@@ -140,7 +140,7 @@
     </fragment>
     <fragment
         android:id="@+id/talkingFragment"
-        android:name="com.example.autoschool11.ui.rules.DPSTalking.TalkingFragment"
+        android:name="com.example.autoschool11.ui.theory.DPSTalking.TalkingFragment"
         android:label="Разговор с ДПС"
         tools:layout="@layout/fragment_talking">
         <action
@@ -149,24 +149,24 @@
     </fragment>
     <fragment
         android:id="@+id/talkingFragment1"
-        android:name="com.example.autoschool11.ui.rules.DPSTalking.TalkingFragmentPDF"
+        android:name="com.example.autoschool11.ui.theory.DPSTalking.TalkingFragmentPDF"
         tools:layout="@layout/fragment_talking_pdf" />
     <fragment
         android:id="@+id/medicineFragment1"
-        android:name="com.example.autoschool11.ui.rules.medicine.MedicineFragmentPDF"
+        android:name="com.example.autoschool11.ui.theory.medicine.MedicineFragmentPDF"
         tools:layout="@layout/fragment_medicine_pdf" />
     <fragment
         android:id="@+id/examInfoFragment1"
-        android:name="com.example.autoschool11.ui.rules.examinfo.ExamInfoFragmentPDF"
+        android:name="com.example.autoschool11.ui.theory.examinfo.ExamInfoFragmentPDF"
         tools:layout="@layout/fragment_exam_info_pdf" />
     <fragment
         android:id="@+id/regionCodesFragment"
-        android:name="com.example.autoschool11.ui.rules.region_codes.RegionCodesFragment"
+        android:name="com.example.autoschool11.ui.theory.region_codes.RegionCodesFragment"
         android:label="Коды регионов"
         tools:layout="@layout/fragment_region_codes" />
     <fragment
         android:id="@+id/signsFragmentVertical"
-        android:name="com.example.autoschool11.ui.rules.signs.SignsFragmentPDF"
+        android:name="com.example.autoschool11.ui.theory.signs.SignsFragmentPDF"
         tools:layout="@layout/fragment_signs_pdf" />
     <fragment
         android:id="@+id/ticket1"
@@ -253,7 +253,7 @@
         android:label="Экзамен" />
     <fragment
         android:id="@+id/rulesFragmentPDD2"
-        android:name="com.example.autoschool11.ui.rules.pdd.RulesFragmentPDD"
+        android:name="com.example.autoschool11.ui.theory.pdd.RulesFragmentPDD"
         android:label="ПДД"
         tools:layout="@layout/fragment_rules_p_d_d">
         <action

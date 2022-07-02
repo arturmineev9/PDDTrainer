@@ -167,7 +167,7 @@ public class Ticket extends Fragment implements AnswersAdapter.DbButtonClickList
 
     @Override
     public void onButtonClick(int position) { // обработка нажатия на вариант ответа
-        binding.horizontalRV.scrollToPosition(question_number - 1);
+        binding.horizontalRV.scrollToPosition(question_number - 2);
         if (count < 1) {
             onAnswerClick(new Handler(), i, question_number, position);
         }
@@ -217,7 +217,7 @@ public class Ticket extends Fragment implements AnswersAdapter.DbButtonClickList
         handler.post(() -> {
             DataBaseHelper databaseHelper = new DataBaseHelper(getContext());
             if (binding.horizontalRV.findViewHolderForAdapterPosition(question_number - 2) != null) {
-                binding.horizontalRV.scrollToPosition(question_number - 1);
+                binding.horizontalRV.scrollToPosition(question_number - 2);
                 RecyclerView.ViewHolder ans_view = binding.ansRV.findViewHolderForAdapterPosition(position);
                 RecyclerView.ViewHolder right_ans = binding.ansRV.findViewHolderForAdapterPosition(PDD_DataBaseHelper.getCorrectans());
                 CardView right_button = right_ans.itemView.findViewById(R.id.ans_card);

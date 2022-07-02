@@ -1,0 +1,76 @@
+
+u
+java:S1192‰"YDefine a constant instead of duplicating this literal "select * from Favourites" 3 times.(Áèæåúÿÿÿÿ
+€
+java:S1192S"eDefine a constant instead of duplicating this literal " INTEGER PRIMARY KEY AUTOINCREMENT, " 5 times.(ÌØİÊøÿÿÿÿ
+a
+java:S1192U"KDefine a constant instead of duplicating this literal " INTEGER);" 4 times.(¸’ıÂ
+a
+java:S1192a"KDefine a constant instead of duplicating this literal " INTEGER, " 5 times.(á½à–
+s
+java:S1192Ü"WDefine a constant instead of duplicating this literal "select * from Mistakes" 3 times.(”ŞÒ‡ûÿÿÿÿ
+y
+java:S1192æ"]Define a constant instead of duplicating this literal "select * from SuccessResults" 4 times.(òÚÿ‘øÿÿÿÿ
+i
+java:S1192R"NDefine a constant instead of duplicating this literal "CREATE TABLE " 6 times.(´àóÒûÿÿÿÿ
+‚
+java:S1192š"kDefine a constant instead of duplicating this literal "select * from Training where knowing_id = " 3 times.(Á²šµ
+r
+java:S1192—"VDefine a constant instead of duplicating this literal "DROP TABLE IF EXISTS " 6 times.(ğ¾ö•ûÿÿÿÿ
+€
+java:S1192 "dDefine a constant instead of duplicating this literal "select * from Training where _id = " 7 times.(Í‘œíıÿÿÿÿ
+‡
+java:S1319º"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ëªô¦
+€
+java:S1319Ø"iThe type of "arrayList" should be an interface such as "List" rather than the implementation "ArrayList".(ìäîû
+Œ
+java:S1319ú"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(öä«‚ÿÿÿÿÿ
+…
+java:S1319µ"iThe type of "arrayList" should be an interface such as "List" rather than the implementation "ArrayList".(¿§Óşÿÿÿÿ
+Œ
+java:S1319Í"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ÉÿãÊÿÿÿÿÿ
+Œ
+java:S1319ö"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(·šëûÿÿÿÿ
+Œ
+java:S1319Ì"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Ğò¬Ÿşÿÿÿÿ
+€
+java:S1319æ"iThe type of "arrayList" should be an interface such as "List" rather than the implementation "ArrayList".(şÊşµ
+€
+java:S1319õ"iThe type of "arrayList" should be an interface such as "List" rather than the implementation "ArrayList".(ŸÛáá
+k	java:S117R"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´àóÒûÿÿÿÿ
+g	java:S117Ñ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ƒÜã¢
+l	java:S117à"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡â™¶ùÿÿÿÿ
+g	java:S117å"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ğî¯º
+l	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’¾Ÿ¹ÿÿÿÿÿ
+l	java:S117®"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤º±øÿÿÿÿ
+l	java:S117á"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Â‹ûçùÿÿÿÿ
+l	java:S117ø"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ºãÖÿÿÿÿÿ
+g	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Öğ‹¢
+g	java:S117Í"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Õ»Ä
+l	java:S117˜"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(é¾àãùÿÿÿÿ
+g	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(­Áóë
+l	java:S117©"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Üúà°üÿÿÿÿ
+g	java:S117¿"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(òãŞ
+g	java:S117¿"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(òãŞ
+l	java:S117Ù"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’øââÿÿÿÿÿ
+l	java:S117à"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(³İş¤şÿÿÿÿ
+l	java:S117è"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÙšØÙşÿÿÿÿ
+l	java:S117÷"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÙšØÙşÿÿÿÿ
+d
+java:S1871¯"MThis branch's code block is the same as the block for the branch on line 171.(»²¾Â
+f
+java:S1854í"JRemove this useless assignment to local variable "dbButtonClassArrayList".(äîØşûÿÿÿÿ
+W
+java:S1481í";Remove this unused "dbButtonClassArrayList" local variable.(äîØşûÿÿÿÿ
+f
+java:S1854À"JRemove this useless assignment to local variable "dbButtonClassArrayList".(äîØşûÿÿÿÿ
+W
+java:S1481À";Remove this unused "dbButtonClassArrayList" local variable.(äîØşûÿÿÿÿ
+V
+java:S1854ù":Remove this useless assignment to local variable "dbread".(ÿÙÕışÿÿÿÿ
+G
+java:S1481ù"+Remove this unused "dbread" local variable.(ÿÙÕışÿÿÿÿ
+V
+java:S1854…":Remove this useless assignment to local variable "cursor".(†òüøÿÿÿÿ
+G
+java:S1481…"+Remove this unused "cursor" local variable.(†òüøÿÿÿÿ

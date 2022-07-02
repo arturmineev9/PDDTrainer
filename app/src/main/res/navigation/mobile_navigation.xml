@@ -217,7 +217,7 @@
     <fragment
         android:id="@+id/finesTestFragment"
         android:name="com.example.autoschool11.ui.tickets.modes.FinesTestFragment"
-        android:label="Тест на штрафы"
+        android:label="Тест по штрафам"
         tools:layout="@layout/fragment_fines_test" />
     <fragment
         android:id="@+id/signsTypesTestFragment"

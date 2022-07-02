@@ -1,0 +1,42 @@
+
+`	java:S112N"FDefine and throw a dedicated exception instead of using a generic one.(ÿ…Éùÿÿÿÿ
+Œ
+java:S1319‡"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ñËßşÿÿÿÿÿ
+Œ
+java:S1319Á"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(´Ê·‰ıÿÿÿÿ
+‡
+java:S1319İ"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(éáİ©
+Œ
+java:S1319ö"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ÁÅöşÿÿÿÿ
+l	java:S117”"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€Ãáßûÿÿÿÿ
+l	java:S117”"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€Ãáßûÿÿÿÿ
+l	java:S117Í"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İÉÊ›ıÿÿÿÿ
+g	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(àÓí¬øÿÿÿÿ
+d
+java:S2095T"IUse try-with-resources or close this "InputStream" in a "finally" clause.(ö÷Â˜ùÿÿÿÿ
+i
+java:S2095U"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(«£òöùÿÿÿÿ
+h
+java:S3008"RRename this field "DB_PATH" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯‹å
+l
+java:S3008 "WRename this field "table_length" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õŞÄ
+d
+java:S3008$"NRename this field "_id" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ô¬Ÿˆ
+q
+java:S3008&"VRename this field "sign_number" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©ìÄŸüÿÿÿÿ
+–
+java:S1186l"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ã€¡u
+`
+java:S1124"EReorder the modifiers to comply with the Java Language Specification.(ç„öäÿÿÿÿÿ
+:
+java:S3010-"$Remove this assignment of "DB_PATH".(¼·š
+:
+java:S3010/"$Remove this assignment of "DB_PATH".(É÷¡
+‚
+java:S11306"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(Ê§õ£
+P	java:S899:";Do something with the "boolean" value returned by "delete".(ø†„æ
+d
+java:S4042:"NUse "java.nio.file.Files#delete" here for better messages on error conditions.(ø†„æ
+d	java:S100ƒ"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÌÔ³£
+d	java:S100‡"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ûÿØÎ
+i	java:S100£"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´Ù•òÿÿÿÿÿ

@@ -24,7 +24,7 @@ import java.util.Date;
 public class PDD_DataBaseHelper extends SQLiteOpenHelper {
     private final static String DB_NAME = "QuestionsPDD.db";
     private static String DB_PATH = "";
-    private static final int DB_VERSION = 22;
+    private static final int DB_VERSION = 23;
     private SQLiteDatabase mDataBase;
     static int correctans;
     static String question;

@@ -1,0 +1,10 @@
+
+Œ
+java:S1319"vThe type of "dbButtonClassArrayList" should be an interface such as "List" rather than the implementation "ArrayList".( Óå
+C
+java:S1604/"(Make this anonymous inner class a lambda(Ìž‘íüÿÿÿÿ
+}
+java:S1104"bMake mdbbuttonClickListener a static final constant or non-public and provide accessors if needed.(†ÎñÅûÿÿÿÿ
+U
+java:S18742":Remove this use of "getAdapterPosition"; it is deprecated.(ï¸²Êýÿÿÿÿ
+f	java:S116>"SRename this field "ans_card" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯¯

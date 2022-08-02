@@ -12,10 +12,10 @@ l	java:S117”"QRename this local variable to match the regular expression '^[a
 l	java:S117”"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(€Ãáßûÿÿÿÿ
 l	java:S117Í"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İÉÊ›ıÿÿÿÿ
 g	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(àÓí¬øÿÿÿÿ
-i
-java:S2095U"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(«£òöùÿÿÿÿ
 d
 java:S2095T"IUse try-with-resources or close this "InputStream" in a "finally" clause.(ö÷Â˜ùÿÿÿÿ
+i
+java:S2095U"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(«£òöùÿÿÿÿ
 h
 java:S3008"RRename this field "DB_PATH" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¯‹å
 l

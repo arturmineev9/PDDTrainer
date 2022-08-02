@@ -27,6 +27,9 @@
     <string name="begin_training">Начать тренировку</string>
     <string name="unavailable">Статистика недоступна! Для начала решите пару билетов.</string>
     <string name="performance">Успеваемость</string>
+    <string name="save_progress">Сохранение прогресса</string>
+    <string name="save_progress_txt">Сохранить</string>
+    <string name="load_progress_txt">Загрузить</string>
 
     <string-array name="rules_names">
         <item>1. Общие положения</item>

@@ -11,9 +11,15 @@
         android:theme="@style/Theme_Light"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".SettingsActivity"
-            android:label="Настройки"
+            android:name=".login_registration.RegistrationActivity"
             android:exported="false" />
+        <activity
+            android:name=".login_registration.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false"
+            android:label="Настройки" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

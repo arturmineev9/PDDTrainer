@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "636513738086",
+    "project_id": "pddtrainer",
+    "storage_bucket": "pddtrainer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:636513738086:android:9ecd449deef630c2743ca7",
+        "android_client_info": {
+          "package_name": "com.example.autoschool11"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "636513738086-14io2gdhajbhk098cpqs6qpjb5v2p3v8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJTlD6YgPkvIN61ty0W1HXQ9hLkmBLL2U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "636513738086-14io2gdhajbhk098cpqs6qpjb5v2p3v8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

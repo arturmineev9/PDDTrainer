@@ -2,6 +2,8 @@ package com.example.autoschool11;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -18,7 +20,10 @@ import android.widget.Button;
 import android.widget.Toast;
 
 
+import com.example.autoschool11.databinding.FragmentSettingsBinding;
 import com.example.autoschool11.db.DataBaseHelper;
+import com.example.autoschool11.login_registration.LoginActivity;
+import com.example.autoschool11.login_registration.RegistrationActivity;
 import com.example.autoschool11.theme_changer.ThemeColor;
 import com.example.autoschool11.theme_changer.Methods;
 import com.turkialkhateeb.materialcolorpicker.ColorChooserDialog;
@@ -27,17 +32,17 @@ import com.turkialkhateeb.materialcolorpicker.ColorListener;
 public class SettingsActivity extends AppCompatActivity implements View.OnClickListener {
     SharedPreferences sharedPreferences, app_preferences;
     SharedPreferences.Editor editor;
-    Button button;
     Methods methods;
     int appTheme;
     int themeColor;
     int appColor;
-    ThemeColor constant;
-    Context context;
+    protected FragmentSettingsBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        binding = FragmentSettingsBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
         app_preferences = PreferenceManager.getDefaultSharedPreferences(this);
         appColor = app_preferences.getInt("color", 0);
         appTheme = app_preferences.getInt("theme", 0);
@@ -51,47 +56,51 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         } else {
             setTheme(appTheme);
         }
-        setContentView(R.layout.fragment_settings);
+        setContentView(view);
 
 
         methods = new Methods();
-        button = findViewById(R.id.button_color);
+
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         editor = sharedPreferences.edit();
 
         colorize();
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ColorChooserDialog dialog = new ColorChooserDialog(SettingsActivity.this);
-                dialog.setTitle("Select");
-                dialog.setColorListener(new ColorListener() {
-                    @Override
-                    public void OnColorClick(View v, int color) {
-                        if (color == 0xffffffff){
-                            Toast.makeText(getBaseContext(), "Тема белого цвета на данный момент недоступна", Toast.LENGTH_SHORT).show();
-                        } else {
-                            colorize();
-                            ThemeColor.color = color;
-                            methods.setColorTheme();
-                            editor.putInt("color", color);
-                            editor.putInt("theme", ThemeColor.theme);
-                            editor.commit();
-                            Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(intent);
-                        }
-
+        binding.buttonColor.setOnClickListener(v -> {
+            ColorChooserDialog dialog = new ColorChooserDialog(SettingsActivity.this);
+            dialog.setTitle("Select");
+            dialog.setColorListener(new ColorListener() {
+                @Override
+                public void OnColorClick(View v, int color) {
+                    if (color == 0xffffffff) {
+                        Toast.makeText(getBaseContext(), "Тема белого цвета на данный момент недоступна", Toast.LENGTH_SHORT).show();
+                    } else {
+                        colorize();
+                        ThemeColor.color = color;
+                        methods.setColorTheme();
+                        editor.putInt("color", color);
+                        editor.putInt("theme", ThemeColor.theme);
+                        editor.commit();
+                        Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
                     }
-                });
 
-                dialog.show();
-            }
+                }
+            });
+
+            dialog.show();
         });
 
-        CardView stat_restart = findViewById(R.id.stat_restart_card);
-        stat_restart.setOnClickListener(this);
+        binding.statRestartCard.setOnClickListener(this);
+        binding.loginButton.setOnClickListener(view1 -> {
+            Intent i = new Intent(SettingsActivity.this, LoginActivity.class);
+            startActivity(i);
+        });
+        binding.registrationButton.setOnClickListener(view12 -> {
+            Intent i = new Intent(SettingsActivity.this, RegistrationActivity.class);
+            startActivity(i);
+        });
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
@@ -105,7 +114,9 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         } else {
             d.getPaint().setColor(ThemeColor.color);
         }
-        button.setBackground(d);
+        binding.buttonColor.setBackground(d);
+        binding.registrationButton.setBackgroundColor(ThemeColor.color);
+        binding.loginButton.setBackgroundColor(ThemeColor.color);
     }
 
     @Override

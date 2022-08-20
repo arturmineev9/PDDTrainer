@@ -260,4 +260,9 @@
             android:id="@+id/action_rulesFragmentPDD2_to_rulesFragment1"
             app:destination="@id/rulesFragment1" />
     </fragment>
+    <activity
+        android:id="@+id/settingsActivity"
+        android:name="com.example.autoschool11.SettingsActivity"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

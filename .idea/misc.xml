@@ -20,13 +20,21 @@
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/drawable/circlebackground.xml" value="0.1" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/drawable/horizontal_buttom.xml" value="0.1625" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/drawable/horizontal_button.xml" value="0.246" />
+        <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/drawable/ic_baseline_content_paste_search_24.xml" value="0.1" />
+        <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/drawable/ic_baseline_medication_24.xml" value="0.1" />
+        <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/drawable/ic_baseline_menu_book_24.xml" value="0.1" />
+        <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/drawable/ic_baseline_menu_book_white.xml" value="0.1" />
+        <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/drawable/ic_baseline_password_24.xml" value="0.1" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/drawable/ic_baseline_query_stats_24.xml" value="0.1" />
+        <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.1" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/drawable/progress_bar.xml" value="0.2995" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/drawable/round_corner.xml" value="0.1095" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/drawable/slide_in_left.xml" value="0.1" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/drawable/slide_in_right.xml" value="0.1" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/drawable/splashscreen.xml" value="0.3255" />
+        <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/activity_login.xml" value="0.4450784593437946" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/activity_registration.xml" value="0.38282208588957056" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/button_row.xml" value="0.3625" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/dbbutton_row.xml" value="0.3625" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_exam.xml" value="0.3625" />
@@ -40,6 +48,7 @@
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_fines_test.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_hard_question.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_home.xml" value="0.3" />
+        <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_login.xml" value="0.34479166666666666" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_main_bottom.xml" value="0.5" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_marathon.xml" value="0.340625" />
         <entry key="..\:/Users/serge/Desktop/AutoSchool1.1/app/src/main/res/layout/fragment_medicine.xml" value="0.1" />

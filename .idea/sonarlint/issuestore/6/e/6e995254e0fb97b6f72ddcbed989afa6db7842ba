@@ -1,17 +1,14 @@
 
-k	java:S117]"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Òµäüÿÿÿÿ
->
-java:S1604E"(Make this anonymous inner class a lambda(Ñá×È
+o	java:S116!"ZRename this field "app_preferences" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(şá
 C
-java:S1604@"(Make this anonymous inner class a lambda(Êœüûÿÿÿÿ
-o	java:S116"ZRename this field "app_preferences" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(şá
-C
-java:S1659"-Declare "app_preferences" on a separate line.(şá
+java:S1659!"-Declare "app_preferences" on a separate line.(şá
 T
-java:S1874)"9Remove this use of "PreferenceManager"; it is deprecated.(Æªûüÿÿÿÿ
+java:S1874."9Remove this use of "PreferenceManager"; it is deprecated.(Æªûüÿÿÿÿ
 ^
-java:S1874)"CRemove this use of "getDefaultSharedPreferences"; it is deprecated.(Æªûüÿÿÿÿ
+java:S1874."CRemove this use of "getDefaultSharedPreferences"; it is deprecated.(Æªûüÿÿÿÿ
 T
-java:S1874;"9Remove this use of "PreferenceManager"; it is deprecated.(©Ÿşáûÿÿÿÿ
+java:S1874@"9Remove this use of "PreferenceManager"; it is deprecated.(©Ÿşáûÿÿÿÿ
 ^
-java:S1874;"CRemove this use of "getDefaultSharedPreferences"; it is deprecated.(©Ÿşáûÿÿÿÿ
+java:S1874@"CRemove this use of "getDefaultSharedPreferences"; it is deprecated.(©Ÿşáûÿÿÿÿ
+S
+java:S1854T"=Remove this useless assignment to local variable "!unknown!".(©€ÅÏ

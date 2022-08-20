@@ -1,0 +1,36 @@
+
+f
+java:S1301]"KReplace this "switch" statement by "if" statements to increase readability.(Ò“ÿšùÿÿÿÿ
+t	java:S116"ZRename this field "app_preferences" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óö–³üÿÿÿÿ
+l
+java:S1450"VRemove the "binding" field and declare it as a local variable in the relevant methods.(¶ÃÊ
+Q
+java:S18545";Remove this useless assignment to local variable "navView".(‹Å´Í
+T
+java:S1874%"9Remove this use of "PreferenceManager"; it is deprecated.(¶¦ô€úÿÿÿÿ
+^
+java:S1874%"CRemove this use of "getDefaultSharedPreferences"; it is deprecated.(¶¦ô€úÿÿÿÿ
+S
+java:S18744"=Remove this use of "setSystemUiVisibility"; it is deprecated.(´Ù…ò
+\
+java:S18744"FRemove this use of "SYSTEM_UI_FLAG_HIDE_NAVIGATION"; it is deprecated.(´Ù…ò
+B
+java:S14815",Remove this unused "navView" local variable.(‹Å´Í
+S
+java:S1874@"=Remove this use of "setSystemUiVisibility"; it is deprecated.(ÄŒøØ
+\
+java:S1874A"FRemove this use of "SYSTEM_UI_FLAG_HIDE_NAVIGATION"; it is deprecated.(Ê„Æ¼
+]
+java:S1874B"GRemove this use of "SYSTEM_UI_FLAG_IMMERSIVE_STICKY"; it is deprecated.(Œàå
+C
+java:S1185R"(Remove this method to simply inherit it.(¦ôËĞıÿÿÿÿ
+<	java:S131]""Add a default case to this switch.(Ò“ÿšùÿÿÿÿ
+h	java:S100i"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Œ™õúÿÿÿÿ
+S
+java:S1874l"=Remove this use of "setSystemUiVisibility"; it is deprecated.(¨ì¨á
+a
+java:S1874p"FRemove this use of "SYSTEM_UI_FLAG_HIDE_NAVIGATION"; it is deprecated.(Š¢î®ûÿÿÿÿ
+b
+java:S1874p"GRemove this use of "SYSTEM_UI_FLAG_IMMERSIVE_STICKY"; it is deprecated.(Š¢î®ûÿÿÿÿ
+X
+java:S1874q"=Remove this use of "setSystemUiVisibility"; it is deprecated.(ü†İ©øÿÿÿÿ

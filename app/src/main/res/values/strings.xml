@@ -8,7 +8,7 @@
     <string name="question">Вопрос</string>
     <string name="next_question">Следующий вопрос</string>
     <string name="pdd">Правлила дорожного движения</string>
-    <string name="settings">Настройки внешнего вида</string>
+    <string name="settings">Внешний вид</string>
     <string name="theme">Тема</string>
     <string name="delete_stat">Сбросить статистику</string>
     <string name="progress">Прогресс</string>
@@ -30,6 +30,12 @@
     <string name="save_progress">Сохранение прогресса</string>
     <string name="save_progress_txt">Сохранить</string>
     <string name="load_progress_txt">Загрузить</string>
+    <string name="login">Войти</string>
+    <string name="password">Пароль</string>
+    <string name="mail">Эл. почта</string>
+    <string name="forgotpassword">ЗАБЫЛИ ПАРОЛЬ?</string>
+    <string name="name">Вашe имя</string>
+    <string name="registration">Зарегистрироваться</string>
 
     <string-array name="rules_names">
         <item>1. Общие положения</item>

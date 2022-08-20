@@ -1,13 +1,25 @@
 
 {
 Kapp/src/main/java/com/example/autoschool11/db/db_classes/DbButtonClass.java,8\c\8cdd59eaba89609dbe694f4492d2668ff1bc4ee4
-q
-Aapp/src/main/java/com/example/autoschool11/ui/tickets/Ticket.java,d\8\d86fcce39d6af7e21b2a4eb9f91e0f4367fb6263
-w
-Gapp/src/main/java/com/example/autoschool11/adapters/AnswersAdapter.java,4\f\4fbaa26b7cf51ad5fec735b20eb4612bf26eb1c5
 u
 Eapp/src/main/java/com/example/autoschool11/db/PDD_DataBaseHelper.java,d\f\dfcff9e7de56282db5ac4873aa4f66da3a758192
 q
 Aapp/src/main/java/com/example/autoschool11/db/DataBaseHelper.java,4\5\4504ef4036cbe7b353c0e17cc908500d3e700215
+w
+Gapp/src/main/java/com/example/autoschool11/adapters/AnswersAdapter.java,4\f\4fbaa26b7cf51ad5fec735b20eb4612bf26eb1c5
+l
+<app/src/main/java/com/example/autoschool11/MainActivity.java,1\d\1d7c73eaa4e68105d01023065c50f790e04e05c9
+q
+Aapp/src/main/java/com/example/autoschool11/ui/tickets/Ticket.java,d\8\d86fcce39d6af7e21b2a4eb9f91e0f4367fb6263
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+w
+Gapp/src/main/java/com/example/autoschool11/ui/theory/RulesFragment.java,d\7\d790fa0a32ac68841ba79e7057ed3dcc867e9214
+€
+Papp/src/main/java/com/example/autoschool11/ui/statistics/StatisticsFragment.java,c\b\cb040028312d6669e7aa02cd4b5576ba0fc38f2f
+€
+Papp/src/main/java/com/example/autoschool11/login_registration/LoginActivity.java,4\f\4faf82e05102344bbdf0abd8d642747c26c5b323
 p
 @app/src/main/java/com/example/autoschool11/SettingsActivity.java,6\e\6e995254e0fb97b6f72ddcbed989afa6db7842ba
+‡
+Wapp/src/main/java/com/example/autoschool11/login_registration/RegistrationActivity.java,1\6\161c177ba1a83d0950e3847b23234d8e2df694e2

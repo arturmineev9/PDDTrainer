@@ -17,9 +17,11 @@ w
 Gapp/src/main/java/com/example/autoschool11/ui/theory/RulesFragment.java,d\7\d790fa0a32ac68841ba79e7057ed3dcc867e9214
 €
 Papp/src/main/java/com/example/autoschool11/ui/statistics/StatisticsFragment.java,c\b\cb040028312d6669e7aa02cd4b5576ba0fc38f2f
-€
-Papp/src/main/java/com/example/autoschool11/login_registration/LoginActivity.java,4\f\4faf82e05102344bbdf0abd8d642747c26c5b323
+@
+app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 p
 @app/src/main/java/com/example/autoschool11/SettingsActivity.java,6\e\6e995254e0fb97b6f72ddcbed989afa6db7842ba
+€
+Papp/src/main/java/com/example/autoschool11/login_registration/LoginActivity.java,4\f\4faf82e05102344bbdf0abd8d642747c26c5b323
 ‡
 Wapp/src/main/java/com/example/autoschool11/login_registration/RegistrationActivity.java,1\6\161c177ba1a83d0950e3847b23234d8e2df694e2

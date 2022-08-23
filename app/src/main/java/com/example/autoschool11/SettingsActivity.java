@@ -93,11 +93,11 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         });
 
         binding.statRestartCard.setOnClickListener(this);
-        binding.loginButton.setOnClickListener(view1 -> {
+        binding.loginButtonCard.setOnClickListener(view1 -> {
             Intent i = new Intent(SettingsActivity.this, LoginActivity.class);
             startActivity(i);
         });
-        binding.registrationButton.setOnClickListener(view12 -> {
+        binding.registrationButtonCard.setOnClickListener(view12 -> {
             Intent i = new Intent(SettingsActivity.this, RegistrationActivity.class);
             startActivity(i);
         });

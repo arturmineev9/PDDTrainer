@@ -71,9 +71,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="7dp"
-            android:fontFamily="@font/font2"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="2dp"
+            android:fontFamily="@font/font2"
             android:text="@string/save_progress"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textStyle="bold" />
@@ -96,34 +96,76 @@
         app:columnCount="2"
         app:orientation="horizontal">
 
-        <Button
-            android:id="@+id/login_button"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/login_button_card"
+            android:layout_width="80dp"
             android:layout_height="48dp"
+            android:clickable="true"
+            app:cardCornerRadius="10dp"
             android:layout_marginEnd="20dp"
-            android:textColor="@color/white"
-            android:fontFamily="@font/font2"
-            android:text="Вход"/>
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardElevation="0dp">
 
-        <Button
-            android:id="@+id/registration_button"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?attr/background_color"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:id="@+id/login_button"
+                    android:layout_height="48dp"
+                    android:gravity="center"
+                    android:fontFamily="@font/font2"
+                    android:text="Вход"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/registration_button_card"
+            android:layout_width="110dp"
             android:layout_height="48dp"
+            android:clickable="true"
             android:layout_marginStart="20dp"
-            android:fontFamily="@font/font2"
-            android:textColor="@color/white"
-            android:text="Регистрация"/>
+            app:cardCornerRadius="10dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?attr/background_color"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:id="@+id/registration_button"
+                    android:layout_height="48dp"
+                    android:gravity="center"
+                    android:fontFamily="@font/font2"
+                    android:text="Регистрация"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
 
     </androidx.gridlayout.widget.GridLayout>
 
     <androidx.gridlayout.widget.GridLayout
         android:id="@+id/grid"
-        android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linear"
         android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
+        android:visibility="invisible"
         app:columnCount="2"
         app:orientation="horizontal">
 

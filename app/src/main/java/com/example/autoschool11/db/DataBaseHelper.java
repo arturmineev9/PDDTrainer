@@ -122,11 +122,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             cv.put(COLUMN_RESULT_4, 0);
             db.insert(TABLE_NAME_4, null, cv);
         }
-        for (int i = 1; i < 29; i++) {
+        /*for (int i = 1; i < 29; i++) {
             cv.put(COLUMN_RESULT_THEMES_4, 0);
             cv.put(COLUMN_RESULT_THEMES_MAX_4, amount[i - 1]);
             db.update(TABLE_NAME_4, cv, COLUMN_ID_4 + "=" + i, null);
-        }
+        }*/
 
         String training = "CREATE TABLE " + TABLE_NAME_5 +
                 " (" + COLUMN_ID_5 + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
